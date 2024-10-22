@@ -24,7 +24,7 @@ export default function useApiVenues(VenueURL) {
                 }
 
                 const json = await response.json();
-                setData(json || json);
+                setData(json.data || json);
             } catch (error) {
                 console.error("Error fetching data:", error);
                 setIsError(true);
@@ -34,7 +34,7 @@ export default function useApiVenues(VenueURL) {
         }
 
         getData();
-    }, [VenueURL]);
+    }, []);
 
     return { data, isLoading, isError };
 }

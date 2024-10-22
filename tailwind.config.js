@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        custom: ["HedvigLettersSans", "sans"],
+      },
+      colors: {
+        customBlue: "#A3D8F8",
+        blueHover: "#79C6F6",
+      },
+    },
   },
   plugins: [],
 }
