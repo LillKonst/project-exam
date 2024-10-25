@@ -10,7 +10,7 @@ export default {
         custom: ["HedvigLettersSans", "sans"],
       },
       colors: {
-        customBlue: "#A3D8F8",
+        customBlue: "#75CFFF",
         blueHover: "#79C6F6",
       },
     },

@@ -48,7 +48,7 @@ export default function Searchbar({ className }) {
                     value={query}
                     onChange={(e) => handleSearch(e.target.value)}
                     placeholder="Search..."
-                    className="bg-transparent border-none outline-none w-full"
+                    className="bg-transparent focus:bg-white border-none outline-none w-full"
                 /></div>
             </form>
     

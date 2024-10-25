@@ -11,9 +11,9 @@ export function Venues() {
     return <div>Venues</div>
 }
 
-export function Profile() {
-    return <div>Profile</div>
-}
+// export function Profile() {
+//     return <div>Profile</div>
+// }
 
 export function RouteNotFound() {
     return <div>Page not found</div>
@@ -52,13 +52,13 @@ export default function Navbar({ className }) {
             <li className="px-2">
                 <Link to="/Venue" onClick={() => setIsMenuOpen(false)}  className={`text-lg ${
                             location.pathname === "/Venues" ? "font-semibold" : ""
-                        }`}>VENUES</Link>
+                        }`}>FIND YOUR NEXT HOLIDAZE</Link>
             </li>
-            <li className="px-2">
+            {/* <li className="px-2">
                 <Link to="/Profile" onClick={() => setIsMenuOpen(false)}  className={`text-lg ${
                             location.pathname === "/Profile" ? "font-semibold" : ""
                         }`}>PROFILE</Link>
-            </li>
+            </li> */}
         </ul>
     </nav>
     );
