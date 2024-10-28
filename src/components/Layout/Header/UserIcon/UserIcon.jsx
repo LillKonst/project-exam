@@ -22,6 +22,7 @@ export default function UserIcon() {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
     return (
     <nav className="flex flex-col items-end">
         <div onClick={toggleMenu} className="flex items-center border border-gray-600 m-3 px-3 py-3 rounded-xl">
@@ -69,9 +70,9 @@ export default function UserIcon() {
 
             {isLoginOpen && (
                 <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                    <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-                        <Login /> 
-                        <button onClick={() => setIsLoginOpen(false)} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">
+                    <div className="bg-white relative p-6 rounded-lg shadow-lg max-w-md w-full">
+                        <Login onClose={() => setIsLoginOpen(false)} /> 
+                        <button onClick={() => setIsLoginOpen(false)} className="mt-4 absolute top-4 right-4 px-4 rounded">
                             Close
                         </button>
                     </div>
