@@ -4,12 +4,19 @@ import { useState } from "react";
 export default function Login({ onClose }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, loading, error} = useLogin();
+  const { mutate: login, isLoading: loading, error } = useLogin();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    login(email, password, onClose); 
-  };
+    login.mutate({ email, password }, {
+        onSuccess: () => {
+            onClose();
+        },
+        onError: (error) => {
+            console.error('Login error:', error);
+        }
+    }); 
+};
 
 
   return (
