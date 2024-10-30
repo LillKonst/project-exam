@@ -11,9 +11,11 @@ export default function Login({ onClose }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     mutate({ email, password }, {
-        onSuccess: () => {
-          contextLogin(userData);
+        onSuccess: (data) => {
+          contextLogin(data);
+          localStorage.setItem('user', JSON.stringify(data));
             onClose();
+            console.log("Login successful for:", email, "with response:", data);
         },
         onError: (error) => {
             console.error('Login error:', error);

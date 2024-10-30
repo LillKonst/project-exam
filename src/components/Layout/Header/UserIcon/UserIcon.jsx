@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import { Link, useLocation } from "react-router-dom"; 
+import { useAuth } from "../../../../context/AuthContext";
 import Register from "../../../Register/Register";
 import Login from "../../../Login/Login";
 
@@ -16,8 +16,9 @@ export default function UserIcon() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isRegisterOpen, setIsRegisterOpen] = useState(false);
     const [isLoginOpen, setIsLoginOpen] = useState(false);
+    
 
-    // const location = useLocation();
+    const { user, logout } = useAuth();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -38,21 +39,36 @@ export default function UserIcon() {
         <ul className={`${
             isMenuOpen ? "flex" : "hidden"
             } flex flex-col border border-white shadow-md bg-white rounded-xl`}>
-            <li className="px-3 py-2 hover:bg-gray-200">
-                    <button onClick={() => { setIsRegisterOpen(true); setIsMenuOpen(false); }} className="text-md">
-                        REGISTER
-                    </button>
-            </li>
-            <li className="px-3 py-2 hover:bg-gray-200">
-                    <button onClick={() => { setIsLoginOpen(true); setIsMenuOpen(false); }} className="text-md">
-                        LOGIN
-                    </button>
-            </li>
-            {/* <li className="px-3 py-2 hover:bg-gray-200">
-                <Link to="/Profile" onClick={() => setIsMenuOpen(false)}  className={`text-md ${
-                    location.pathname === "/Profile" ? "font-semibold" : ""
-                    }`}>PROFILE</Link>
-            </li> */}
+            {!user ? (  // Check if the user is logged in
+                    <>
+                        <li className="px-3 py-2 hover:bg-gray-200">
+                            <button onClick={() => { setIsRegisterOpen(true); setIsMenuOpen(false); }} className="text-md">
+                                REGISTER
+                            </button>
+                        </li>
+                        <li className="px-3 py-2 hover:bg-gray-200">
+                            <button onClick={() => { setIsLoginOpen(true); setIsMenuOpen(false); }} className="text-md">
+                                LOGIN
+                            </button>
+                        </li>
+                    </>
+                ) : (
+                    <>
+                        <li className="px-3 py-2 hover:bg-gray-200">
+                            <button onClick={() => { /* Navigate to profile */ }} className="text-md">
+                                PROFILE
+                            </button>
+                        </li>
+                        <li className="px-3 py-2 hover:bg-gray-200">
+                            <button onClick={() => { 
+                                logout(); // Call logout function
+                                setIsMenuOpen(false); 
+                            }} className="text-md">
+                                LOGOUT
+                            </button>
+                        </li>
+                    </>
+                )}
         </ul>
       
 
