@@ -1,15 +1,18 @@
 import useLogin from "../../hooks/useLogin"
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Login({ onClose }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { mutate: login, isLoading: loading, error } = useLogin();
+  const { login: contextLogin } = useAuth();
+  const { mutate, isLoading: loading, error } = useLogin();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    login.mutate({ email, password }, {
+    mutate({ email, password }, {
         onSuccess: () => {
+          contextLogin(userData);
             onClose();
         },
         onError: (error) => {
@@ -61,7 +64,7 @@ export default function Login({ onClose }) {
         >
           {loading ? "Logging in..." : "Login"}
         </button>
-        {error && <div style={{ color: "red" }}>Error: {error}</div>}
+        {error && <div style={{ color: "red" }}>Error: {error.message}</div>}
       </div>
     </form>
   );
