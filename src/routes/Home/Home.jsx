@@ -1,4 +1,6 @@
-import VenueCardSm from "../../components/ListOfVenues/ListOfVenues"
+import CalendarForm from "../../components/calendarForm/CalendarForm";
+import VenueCardSm from "../../components/ListOfVenues/ListOfVenues";
+
 
 
 export default function Home() {
@@ -6,7 +8,7 @@ export default function Home() {
         <div>
             <div className="h-[70px]"></div>
 
-            Home
+            <CalendarForm />
             <VenueCardSm />
         </div>
     );

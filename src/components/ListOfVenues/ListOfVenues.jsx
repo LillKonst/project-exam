@@ -2,7 +2,7 @@ import VenueLinkSm from "../cards/VenueLinkSm/VenueLinkSm"
 import useApiVenues from "../../hooks/useApiVenues";
 
 export default function ListOfVenues() {
-    const { data: venues, isLoading, isError } = useApiVenues("https://v2.api.noroff.dev/holidaze/venues");
+    const { data: venues, isLoading, isError } = useApiVenues();
 
     if (isLoading) {
         return <div>Loading venues...</div>;

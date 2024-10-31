@@ -3,7 +3,7 @@ import useFetchVenue from "../hooks/useFetchVenue";
 import VenueDetails from "../../components/cards/VenueDetails/VenueDetails"
 
 export default function VenueSpecific() {
-    const { product, isLoading, isError } = useFetchVenue();
+    const { venue, isLoading, isError } = useFetchVenue();
 
     if (isLoading) {
         return <div>Loading product details...</div>;

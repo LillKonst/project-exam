@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom";
 
-export default function VenueLinkSm({ venue }) {
+export default function VenueDetails({ venue }) {
     return (
         <div>
             <div className="relative w-full aspect-[4/3]">
@@ -10,9 +10,7 @@ export default function VenueLinkSm({ venue }) {
                     alt={venue.media[0]?.alt || "Product image"} 
                     className="object-cover w-full h-full rounded"
                 />
-                <span className="absolute inset-0 flex items-center justify-center rounded text-2xl text-white bg-gray-600 bg-opacity-50 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
-                VIEW
-                </span>
+                
             </div>
             <div className="flex">
             <div>

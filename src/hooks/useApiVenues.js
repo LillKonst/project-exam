@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 
-// API URL
-export const VenueURL = "https://v2.api.noroff.dev/holidaze/venues";
-
 // Custom hook for fetching data from the API
-export default function useApiVenues(VenueURL) {
+export default function useApiVenues() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -15,7 +12,9 @@ export default function useApiVenues(VenueURL) {
         console.log("Fetching data from API...");
         setIsLoading(true);
         setIsError(false);
-        const response = await fetch(VenueURL);
+        const response = await fetch(
+          `${import.meta.env.VITE_APP_BASEURL}holidaze/venues`
+        );
 
         console.log("API Response:", response);
 
