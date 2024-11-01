@@ -14,7 +14,7 @@ export default function Register() {
                     placeholder="John Doe"
                 />
             </div>
-
+            <div>Husk å legge til venuemanager yes or no</div>
             <div>
                 <label htmlFor="email" className="block text-gray-700">Email</label>
                 <input

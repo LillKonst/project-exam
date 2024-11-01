@@ -1,35 +1,32 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { APIUrl } from "./useApiVenues";
 
-export const VenueURL = "https://v2.api.noroff.dev/holidaze/venues";
-
-const baseURL = import.meta.env.VITE_APP_BASEURL;
-
-export default function useFetchProduct() {
-  const [product, setProduct] = useState(null);
+export default function useFetchVenue() {
+  const [venue, setVenue] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
-    async function fetchProduct(VenueURL) {
+    async function fetchVenue() {
       try {
         setIsLoading(true);
         setIsError(false);
-        const response = await fetch(`${VenueURL}${id}`);
+        const response = await fetch(
+          `${import.meta.env.VITE_APP_BASEURL}holidaze/venues/${id}`
+        );
         const data = await response.json();
-        setProduct(data.data);
+        setVenue(data.data);
       } catch (error) {
-        console.error("Error fetching product:", error);
+        console.error("Error fetching venue:", error);
         setIsError(true);
       } finally {
         setIsLoading(false);
       }
     }
 
-    fetchProduct(VenueURL);
+    fetchVenue();
   }, [id]);
 
-  return { product, isLoading, isError };
+  return { venue, isLoading, isError };
 }

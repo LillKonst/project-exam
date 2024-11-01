@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../../../context/AuthContext";
 import Register from "../../../Register/Register";
 import Login from "../../../Login/Login";
+import { Link } from "react-router-dom";
 
 export function Profile() {
     return <div>Profile</div>
@@ -55,9 +56,9 @@ export default function UserIcon() {
                 ) : (
                     <>
                         <li className="px-3 py-2 hover:bg-gray-200">
-                            <button onClick={() => { /* Navigate to profile */ }} className="text-md">
+                            <Link to="/Profile" onClick={() => setIsMenuOpen(false)} className="text-md">
                                 PROFILE
-                            </button>
+                            </Link>
                         </li>
                         <li className="px-3 py-2 hover:bg-gray-200">
                             <button onClick={() => { 

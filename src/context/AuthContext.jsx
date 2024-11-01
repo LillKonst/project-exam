@@ -3,37 +3,47 @@ import { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  // const [user, setUser] = useState(null); 
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] =useState(() => {
+    const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem('user');
     return storedUser ? JSON.parse(storedUser) : null; 
   });
 
   useEffect(() => {
     if (user) {
-      localStorage.setItem('user', JSON.stringify(user)); // Store user data when it changes
+      localStorage.setItem('user', JSON.stringify(user)); 
     } else {
-      localStorage.removeItem('user'); // Remove user data from local storage if null
+      localStorage.removeItem('user'); 
     }
   }, [user]);
 
   const login = (userData) => {
     setUser(userData);
-    // setIsLoggedIn(true);
-    // localStorage.setItem('user', JSON.stringify(userData))
-  };
+    };
 
   const logout = () => {
     setUser(null);
-    // setIsLoggedIn(false);
-    // localStorage.removeItem('user');
+  };
+
+  const updateAvatar = (newAvatar) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      avatar: newAvatar,
+    }));
+  };
+
+   const updateBookings = (newBookings) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      bookings: newBookings,
+    }));
   };
 
   const isLoggedIn = !!user;
 
+  const isVenueManager = user?.venueManager || false;
+
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn, login, logout }}>
+    <AuthContext.Provider value={{ user, isLoggedIn, isVenueManager, login, logout, updateAvatar, updateBookings }}>
       {children}
     </AuthContext.Provider>
   );

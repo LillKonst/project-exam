@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom";
 
-export default function VenueDetails({ venue }) {
+export default function VenueDetails({ venue }) {  
     return (
         <div>
             <div className="relative w-full aspect-[4/3]">
