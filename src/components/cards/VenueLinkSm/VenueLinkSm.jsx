@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function VenueLinkSm({ venue }) {
     return (
-        <Link to={`/venue/${venue.id}`} className="block transition duration-300 ease-in-out group col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
+        <Link to={`/VenueSpecific/${venue.id}`} className="block transition duration-300 ease-in-out group col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3">
             <div className="relative w-full aspect-[4/3]">
                 <img 
                     src={venue.media[0]?.url} 

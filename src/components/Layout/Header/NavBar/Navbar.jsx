@@ -54,11 +54,7 @@ export default function Navbar({ className }) {
                             location.pathname === "/Venues" ? "font-semibold" : ""
                         }`}>FIND YOUR NEXT HOLIDAZE</Link>
             </li>
-            {/* <li className="px-2">
-                <Link to="/Profile" onClick={() => setIsMenuOpen(false)}  className={`text-lg ${
-                            location.pathname === "/Profile" ? "font-semibold" : ""
-                        }`}>PROFILE</Link>
-            </li> */}
+            
         </ul>
     </nav>
     );
