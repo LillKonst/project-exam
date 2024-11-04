@@ -32,7 +32,7 @@ import useApiVenues from "../../hooks/useApiVenues";
 
 export default function ListOfVenues() {
   const { data: venues, isLoading, isError } = useApiVenues();
-
+ 
   if (isLoading) {
     return <div>Loading venues...</div>;
   }

@@ -1,9 +1,11 @@
 
-import useFetchVenue from "../hooks/useFetchVenue";
+import useFetchVenue from "../../hooks/useFetchVenue.js";
 import VenueDetails from "../../components/cards/VenueDetails/VenueDetails"
+import { useVenue } from "../../context/VenueContext.jsx";
 
 export default function VenueSpecific() {
-    const { venue, isLoading, isError } = useFetchVenue();
+    // const { venue, isLoading, isError } = useFetchVenue();
+    const { venue, isLoading, isError } = useVenue();
 
     if (isLoading) {
         return <div>Loading product details...</div>;
@@ -13,14 +15,14 @@ export default function VenueSpecific() {
         return <div>Error loading product details.</div>;
     }
 
-    if (!product) {
+    if (!venue) {
         return <div>No product data available.</div>;
     }
     
     return (
         <div>
-            <div className="h-[110px] md:h-[70px]"></div>
-           <VenueDetails venue={venue} />
+            <div className="h-[70px]"></div>
+            <VenueDetails venue={venue} />
         </div>
     );
 }

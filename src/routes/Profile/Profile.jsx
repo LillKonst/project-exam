@@ -10,7 +10,10 @@ export default function Profile() {
       <div className="h-[70px]"></div>
       <ProfileInfo />
       {isVenueManager ? (
+        <>
         <MyVenues />
+        <MyBookings />
+        </>
       ) : (
         <MyBookings />
       )}

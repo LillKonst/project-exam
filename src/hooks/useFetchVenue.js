@@ -31,10 +31,9 @@
 //   return { venue, isLoading, isError };
 // }
 
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
-// Fetch function for a single venue
 async function fetchVenue(id) {
   const response = await fetch(
     `${import.meta.env.VITE_APP_BASEURL}holidaze/venues/${id}`
@@ -42,13 +41,17 @@ async function fetchVenue(id) {
   if (!response.ok) {
     throw new Error("Network response was not ok");
   }
-  return response.json();
+
+  const json = await response.json();
+  return json.data || json;
 }
 
-// Custom hook using React Query
 export default function useFetchVenue() {
   const { id } = useParams();
-  return useQuery(["venue", id], () => fetchVenue(id), {
-    enabled: !!id, // Ensures the query only runs if id is available
+
+  return useQuery({
+    queryKey: ["venue", id],
+    queryFn: () => fetchVenue(id),
+    enabled: !!id,
   });
 }

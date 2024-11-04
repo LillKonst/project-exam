@@ -38,7 +38,7 @@
 //   return { data, isLoading, isError };
 // }
 
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 // Fetch function for venues
 async function fetchVenues() {
@@ -48,13 +48,16 @@ async function fetchVenues() {
   if (!response.ok) {
     throw new Error("Network response was not ok");
   }
-  return response.json();
+
+  const json = await response.json();
+  return json.data || json;
 }
 
-// Custom hook using React Query
 export default function useApiVenues() {
-  return useQuery("venues", fetchVenues, {
-    staleTime: 60000, // Data stays fresh for 1 minute
-    cacheTime: 300000, // Cache data for 5 minutes
+  return useQuery({
+    queryKey: ["venues"],
+    queryFn: fetchVenues,
+    staleTime: 60000,
+    cacheTime: 300000,
   });
 }
