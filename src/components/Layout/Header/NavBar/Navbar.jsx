@@ -7,7 +7,7 @@ export function Home() {
     return <div>Home</div>
 }
 
-export function Venues() {
+export function AllVenues() {
     return <div>Venues</div>
 }
 
@@ -45,14 +45,14 @@ export default function Navbar({ className }) {
                     bg-customBlue md:bg-transparent md:w-auto 
                      md:items-center md:justify-between`}>
             <li className="px-2">
-                <Link to="" onClick={() => setIsMenuOpen(false)}  className={`text-lg ${
+                <Link to="" onClick={() => setIsMenuOpen(false)}  className={`text-lg text-customWhite ${
                             location.pathname === "/" ? "font-semibold" : ""
                         }`}>HOME</Link>
             </li>
             <li className="px-2">
-                <Link to="/Venue" onClick={() => setIsMenuOpen(false)}  className={`text-lg ${
-                            location.pathname === "/Venues" ? "font-semibold" : ""
-                        }`}>FIND YOUR NEXT HOLIDAZE</Link>
+                <Link to="/AllVenues" onClick={() => setIsMenuOpen(false)}  className={`text-lg text-customWhite ${
+                            location.pathname === "/AllVenues" ? "font-semibold" : ""
+                        }`}>VENUES</Link>
             </li>
             
         </ul>

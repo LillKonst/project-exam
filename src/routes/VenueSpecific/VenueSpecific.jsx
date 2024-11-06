@@ -6,17 +6,19 @@ import { useVenue } from "../../context/VenueContext.jsx";
 export default function VenueSpecific() {
     // const { venue, isLoading, isError } = useFetchVenue();
     const { venue, isLoading, isError } = useVenue();
+    
+    
 
     if (isLoading) {
-        return <div>Loading product details...</div>;
+        return <div>Loading venue details...</div>;
     }
 
     if (isError) {
-        return <div>Error loading product details.</div>;
+        return <div>Error loading venue details.</div>;
     }
 
     if (!venue) {
-        return <div>No product data available.</div>;
+        return <div>No venue data available.</div>;
     }
     
     return (

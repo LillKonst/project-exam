@@ -7,6 +7,7 @@ import Home from "./routes/Home/Home";
 import Profile from "./routes/Profile/Profile"
 import VenueSpecific from "./routes/VenueSpecific/VenueSpecific";
 import { VenueProvider } from "./context/VenueContext";
+import AllVenues from "./routes/AllVenues/AllVenues";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route path="" element={<Home />} />
             <Route path="Profile" element={<Profile />} />
+            <Route path="/AllVenues" element={<AllVenues />} />
             <Route path="/VenueSpecific/:id" element={
             <VenueProvider>
               <VenueSpecific />
