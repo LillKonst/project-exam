@@ -6,19 +6,20 @@ import { useAuth } from "../../context/AuthContext";
 export default function Profile() {
   const { isVenueManager } = useAuth();
   return (
-    <div>
-      <div className="h-[70px]"></div>
-      <ProfileInfo />
-      {isVenueManager ? (
-        <>
-        <MyVenues />
-        <MyBookings />
-        </>
-      ) : (
-        <MyBookings />
-      )}
+    <div className="flex flex-col items-center justify-center">
+      <div className="w-10/12">
+        <ProfileInfo />
+        {isVenueManager ? (
+          <>
+            <MyBookings />
+            <MyVenues />
+            <BookedVenues />
+          </>
+        ) : (
+            <MyBookings />
+        )}
       
-      
+      </div>
     </div>
   );
 }

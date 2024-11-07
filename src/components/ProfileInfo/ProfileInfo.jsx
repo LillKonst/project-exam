@@ -10,28 +10,29 @@ export default function ProfileInfo() {
   const userData = user.data; 
 
   return (
-    <div>
+    <div className="flex w-full relative">
       {userData.avatar && userData.avatar.url && (
         <img
         src={userData.avatar.url}
         alt={userData.avatar.alt || "User Avatar"}
-        className="w-16 h-16 rounded-full mb-4"
+        className="w-24 h-24 rounded-full mb-4 m-4"
         />
       )}
-
+      <button className="absolute top-0 right-0 hover:underline">Edit Profile</button>
       <div>
-        <p>{userData.name}</p>
-        {isVenueManager && (
-          <p>Venue Manager</p>
-        )}
-      </div>
+        <div className="mt-4">
+          <h1 className="text-2xl font-semibold">{userData.name}</h1>
+          {isVenueManager && (
+            <h2 className="text-2xl font-semibold">Venue Manager</h2>
+          )}
+        </div>
+        <p className="font-semibold">
+          {userData.email}
+        </p>
 
-      <div>
-      <strong>Email:</strong> {userData.email}
-      </div>
-
-      <div>
-        <strong>Bio:</strong> {userData.bio}
+        <div>
+          <p className="my-3"> The bio should be displayed here.{userData.bio}</p>
+        </div>
       </div>
     </div>
   );
