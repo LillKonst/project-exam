@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-
+import { updateUserProfileAPI } from "../hooks/updateUserProfile";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -24,11 +24,25 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
-  const updateAvatar = (newAvatar) => {
-    setUser((prevUser) => ({
-      ...prevUser,
-      avatar: newAvatar,
-    }));
+  const updateUserProfile = async (newUserData) => {
+    try {
+      if (!user || !user.accessToken) {
+        console.error("User is not logged in or token is missing");
+        return;
+      }
+      // Pass the user's auth token to the API function
+      const updatedUserData = await updateUserProfileAPI(newUserData, user.accessToken, user.data.name);
+      
+      // Update context state with the data returned from the server
+      setUser((prevUser) => ({
+        ...prevUser,
+        data: updatedUserData,
+        avatar: updatedUserData.avatar,
+        venueManager: updatedUserData.venueManager,
+      }));
+    } catch (error) {
+      console.error("Failed to update user profile:", error);
+    }
   };
 
    const updateBookings = (newBookings) => {
@@ -43,7 +57,7 @@ export function AuthProvider({ children }) {
   const isVenueManager = user?.venueManager || false;
 
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn, isVenueManager, login, logout, updateAvatar, updateBookings }}>
+    <AuthContext.Provider value={{ user, isLoggedIn, isVenueManager, login, logout, updateUserProfile, updateBookings }}>
       {children}
     </AuthContext.Provider>
   );
