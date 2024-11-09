@@ -26,12 +26,12 @@ export function AuthProvider({ children }) {
 
   const updateUserProfile = async (newUserData) => {
     try {
-      if (!user || !user.accessToken) {
+      if (!user || !user.data.accessToken) {
         console.error("User is not logged in or token is missing");
         return;
       }
       // Pass the user's auth token to the API function
-      const updatedUserData = await updateUserProfileAPI(newUserData, user.accessToken, user.data.name);
+      const updatedUserData = await updateUserProfileAPI(newUserData, user.data.accessToken, user.data.name);
       
       // Update context state with the data returned from the server
       setUser((prevUser) => ({

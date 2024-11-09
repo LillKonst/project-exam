@@ -35,7 +35,7 @@ export default function EditProfile() {
         <label htmlFor="avaturUrl" className="text-sm font-medium">Profile image URL:</label>
         <input
         type="url"
-        name="avatarURL"
+        name="avatarUrl"
         id="avatarUrl"
         value={newUserData.avatarUrl}
         onChange={handleChange}
