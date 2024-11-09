@@ -20,7 +20,7 @@ export default function MyBookings() {
   }, [user]);
 
   return (
-    <div>
+    <div className="flex flex-col">
       <h2 className="text-xl font-semibold">MY UPCOMING HOLIDAZE ({user?._count?.bookings || 0})</h2>
       {upcomingHolidaze.length > 0 ? (
           upcomingHolidaze.map((booking) => (

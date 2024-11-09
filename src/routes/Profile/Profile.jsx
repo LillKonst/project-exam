@@ -15,7 +15,7 @@ export default function Profile() {
           <>
             <MyBookings />
             <MyVenues />
-            <BookedVenues />
+            {/* <BookedVenues /> */}
           </>
         ) : (
             <MyBookings />

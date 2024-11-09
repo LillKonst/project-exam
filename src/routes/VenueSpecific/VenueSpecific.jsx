@@ -2,6 +2,7 @@
 import useFetchVenue from "../../hooks/useFetchVenue.js";
 import VenueDetails from "../../components/cards/VenueDetails/VenueDetails"
 import { useVenue } from "../../context/VenueContext.jsx";
+import BookVenue from "../../components/cards/VenueDetails/BookVenue.jsx";
 
 export default function VenueSpecific() {
     // const { venue, isLoading, isError } = useFetchVenue();
@@ -23,7 +24,6 @@ export default function VenueSpecific() {
     
     return (
         <div>
-            <div className="h-[70px]"></div>
             <VenueDetails venue={venue} />
         </div>
     );

@@ -9,7 +9,8 @@ export default function ProfileInfo() {
   if (!user) {
     return <div>No user information available.</div>
   }
-
+  console.log(user.data.accessToken);
+  
   const userData = user.data; 
 
   const toggleOverlay = () => {
@@ -27,10 +28,10 @@ export default function ProfileInfo() {
       )}
       <button className="absolute top-0 right-0 hover:underline" onClick={toggleOverlay}>Edit Profile</button>
       <div>
-        <div className="mt-4">
+        <div className="mt-4 flex items-center">
           <h1 className="text-2xl font-semibold">{userData.name}</h1>
           {isVenueManager && (
-            <h2 className="text-2xl font-semibold">Venue Manager</h2>
+            <h2 className="text-xl font-semibold ms-2 text-gray-700">• VENUE MANAGER</h2>
           )}
         </div>
         <p className="font-semibold">
@@ -38,7 +39,7 @@ export default function ProfileInfo() {
         </p>
 
         <div>
-          <p className="my-3"> The bio should be displayed here.{userData.bio}</p>
+          <p className="my-3">{userData.bio}</p>
         </div>
       </div>
       {isOverlayVisible && (
