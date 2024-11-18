@@ -135,7 +135,7 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 // import useCreateBooking from "../../../hooks/useCreateBooking";
 
-export default function BookVenue({ venue, onSearchSubmit }) {
+export default function BookVenue({ venue }) {
   // const { mutate: createBooking, isLoading, error } = useCreateBooking();
   const [dateFrom, setDateFrom] = useState(null);
   const [dateTo, setDateTo] = useState(null);
@@ -176,16 +176,15 @@ export default function BookVenue({ venue, onSearchSubmit }) {
     };
 
     // createBooking(newBooking); 
-    onSearchSubmit(newBooking); 
   };
 
   return (
     <div className="flex flex-col justify-center items-center bg-customBlue p-6 rounded-2xl m-3 shadow-md">
       <form onSubmit={handleSubmit} className="flex flex-col mx-5 my-2">
-        <div className="flex self-start mb-2">
+        {/* <div className="flex self-start mb-2">
           <h2 className="text-2xl">{venue.price}</h2>
           <h2 className="ms-2 text-gray-600 text-2xl">night</h2>
-        </div>
+        </div> */}
 
         <div className="flex justify-center items-center">
           <DatePicker

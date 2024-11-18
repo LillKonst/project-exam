@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom";
 
 export default function VenueLinkSm({ venue }) {
+  console.log(venue);
     return (
         <Link to={`/VenueSpecific/${venue.id}`} className="block transition duration-300 ease-in-out group col-span-12 sm:col-span-6 md:col-span-4 m-2">
             <div className="relative w-full aspect-[5/3]">
@@ -17,6 +18,11 @@ export default function VenueLinkSm({ venue }) {
             <div className="flex">
             <div>
             <h2 className="text-lg ms-1 font-semibold">{venue.name}</h2>
+            <h3 className="ms-1">
+            {venue.location?.city || venue.location?.country
+              ? `${venue.location?.city?.slice(0, 15) || ''}${venue.location?.city && venue.location?.country ? ', ' : ''}${venue.location?.country?.slice(0, 15) || ''}`
+              : "Location not available"} 
+            </h3>
             <div className="flex ms-1">
             <p className="text-lg font-semibold me-1">${venue.price}</p>
             <p className="text-lg text-gray-600">night</p>
