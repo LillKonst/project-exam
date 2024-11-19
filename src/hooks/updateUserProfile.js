@@ -2,14 +2,14 @@ export async function updateUserProfileAPI(newUserData, accessToken, user) {
   console.log("User object before updating profile:", user);
   console.log("Access Token:", accessToken);
 
-  const payload = {
-    bio: newUserData.bio,
-    avatar: {
-      url: newUserData.avatarUrl, // Ensure this is a full, valid URL string
-      alt: "User Avatar",
-    },
-    venueManager: newUserData.venueManager,
-  };
+  const payload = {};
+  if (newUserData.bio !== undefined) payload.bio = newUserData.bio;
+  if (newUserData.avatarUrl)
+    payload.avatar = { url: newUserData.avatarUrl, alt: "User Avatar" };
+  if (newUserData.venueManager !== undefined)
+    payload.venueManager = newUserData.venueManager;
+
+  console.log("Payload being sent to API:", payload);
 
   try {
     const response = await fetch(

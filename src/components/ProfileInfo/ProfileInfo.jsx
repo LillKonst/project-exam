@@ -17,6 +17,10 @@ export default function ProfileInfo() {
     setIsOverlayVisible(!isOverlayVisible);
   };
 
+  const onClose = () => {
+    setIsOverlayVisible(false);
+  }
+
   return (
     <div className="flex w-full relative">
       {userData.avatar && userData.avatar.url && (
@@ -43,18 +47,12 @@ export default function ProfileInfo() {
         </div>
       </div>
       {isOverlayVisible && (
-        <div className="overlay">
-          <div className="overlay-content">
-            <button 
-              className="close-button" 
-              onClick={toggleOverlay}
-            >
-              Close
-            </button>
-            <EditProfile />
-          </div>
-        </div>
-      )}
+  <div className="overlay">
+    <div className="overlay-content">
+      <EditProfile onClose={onClose} />
+    </div>
+  </div>
+)}
     </div>
   );
 }
