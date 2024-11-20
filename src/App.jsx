@@ -8,6 +8,7 @@ import Profile from "./routes/Profile/Profile"
 import VenueSpecific from "./routes/VenueSpecific/VenueSpecific";
 import { VenueProvider } from "./context/VenueContext";
 import AllVenues from "./routes/AllVenues/AllVenues";
+import RegisterVenue from "./routes/RegisterVenue/RegisterVenue";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <VenueSpecific />
             </VenueProvider>
           } />
+          <Route path="/RegisterVenue" element={<RegisterVenue />} />
             <Route path="*" element={<RouteNotFound />} />
           </Route>
         </Routes>
