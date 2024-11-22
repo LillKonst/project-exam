@@ -4,6 +4,7 @@ import Register from "../../../Register/Register";
 import Login from "../../../Login/Login";
 import { Link } from "react-router-dom";
 import WelcomeModal from "../../../WelcomeModal";
+import useLogout from "../../../../hooks/useLogout";
 
 export function Profile() {
     return <div>Profile</div>
@@ -22,7 +23,8 @@ export default function UserIcon() {
     const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
     
 
-    const { user, logout } = useAuth();
+    const { user } = useAuth();
+    const logout  = useLogout();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -52,7 +54,7 @@ export default function UserIcon() {
             isMenuOpen ? "flex" : "hidden"
             } absolute top-12 right-6 mt-5 flex flex-col border border-white shadow-md bg-white rounded-xl`}>
             {!user ? ( 
-                    <>
+                    <div className="p-3">
                         <li className="px-3 py-2 hover:bg-gray-200">
                             <button onClick={() => { setIsRegisterOpen(true); setIsMenuOpen(false); }} className="text-md">
                                 REGISTER
@@ -63,15 +65,20 @@ export default function UserIcon() {
                                 LOGIN
                             </button>
                         </li>
-                    </>
+                    </div>
                 ) : (
-                    <>
-                        <li className="px-3 py-2 hover:bg-gray-200">
+                    <div className="p-3">
+                        <li className="px-3 py-2 hover:bg-gray-200 text-lg">
                             <Link to="/Profile" onClick={() => setIsMenuOpen(false)} className="text-md">
                                 PROFILE
                             </Link>
                         </li>
-                        <li className="px-3 py-2 hover:bg-gray-200">
+                        <li className="px-3 py-2 hover:bg-gray-200 text-lg">
+                          <Link to="RegisterVenue" onClick={() => setIsMenuOpen(false)} className="text-md">
+                            REGISTER VENUE
+                          </Link>
+                        </li>
+                        <li className="px-3 py-2 mt-3 hover:bg-gray-200">
                             <button onClick={() => { 
                                 logout(); 
                                 setIsMenuOpen(false); 
@@ -79,7 +86,7 @@ export default function UserIcon() {
                                 LOGOUT
                             </button>
                         </li>
-                    </>
+                    </div>
                 )}
         </ul>
       

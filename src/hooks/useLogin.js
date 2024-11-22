@@ -29,7 +29,7 @@ const useLogin = () => {
   return useMutation({
     mutationFn: async (credentials) => {
       const response = await fetch(
-        `${import.meta.env.VITE_APP_BASEURL}auth/login`,
+        `${import.meta.env.VITE_APP_BASEURL}auth/login?_holidaze=true`,
         {
           method: "POST",
           body: JSON.stringify(credentials),

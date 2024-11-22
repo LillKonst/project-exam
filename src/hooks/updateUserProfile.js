@@ -26,6 +26,9 @@ export async function updateUserProfileAPI(newUserData, accessToken, user) {
     );
 
     if (!response.ok) {
+      if (response.status === 401) {
+        throw new Error("Token expired. Please log in again.");
+      }
       throw new Error("Failed to update profile");
     }
 

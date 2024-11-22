@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
-export default function useMyVenues(user) {
-  const queryKey = ["venues", user?.name];
+export default function useMyBookings(user) {
+  const queryKey = ["bookings", user?.name];
   const queryFn = async () => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = user?.accessToken; // If accessToken is stored inside the user object
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const token = storedUser?.accessToken; // If accessToken is stored inside the user object
     if (!token) {
       throw new Error("Access token is missing or expired.");
     }
@@ -12,7 +12,7 @@ export default function useMyVenues(user) {
     const response = await fetch(
       `${import.meta.env.VITE_APP_BASEURL}holidaze/profiles/${
         user.name
-      }/venues`,
+      }/bookings`,
       {
         headers: {
           "X-Noroff-API-Key": import.meta.env.VITE_APP_API_KEY,
@@ -23,7 +23,7 @@ export default function useMyVenues(user) {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || "Failed to fetch venues");
+      throw new Error(errorData.message || "Failed to fetch bookings");
     }
 
     const data = await response.json();
@@ -32,7 +32,7 @@ export default function useMyVenues(user) {
 
   // React Query with object form
   const {
-    data: venues = [], // default to empty array
+    data: bookings = [], // default to empty array
     error,
     isLoading: loading,
   } = useQuery({
@@ -41,5 +41,5 @@ export default function useMyVenues(user) {
     enabled: !!user?.name, // Prevent running the query if user.name is not available
   });
 
-  return { venues, loading, error };
+  return { bookings, loading, error };
 }

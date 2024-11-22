@@ -20,7 +20,7 @@ export default function EditProfile({ onClose }) {
         venueManager: user?.venueManager || false, 
       };
       setNewUserData(initialFormData);
-      setInitialData(initialFormData)
+      setInitialData(initialFormData);
     }
   }, [user]);
 
@@ -36,6 +36,10 @@ export default function EditProfile({ onClose }) {
       return changes;
     }, {});
 
+    if (newUserData.venueManager !== initialData.venueManager) {
+      updatedFields.venueManager = newUserData.venueManager;
+    }
+
   if (Object.keys(updatedFields).length > 0) {
     try {
       setLoading(true); // Set loading to true when request starts
@@ -45,14 +49,30 @@ export default function EditProfile({ onClose }) {
       onClose(); // Close the modal upon successful update
 
     } catch (err) {
-      setError("Failed to update profile. Please try again."); // Show error message
-      console.error(err);
+      if (err.message === "Token expired. Please log in again.") {
+        // Token was expired, handle token refresh
+        await handleTokenRefresh();
+      } else {
+        setError("Failed to update profile. Please try again."); // Show error message
+        console.error(err);
+      }
     } finally {
       setLoading(false); // Reset loading state
     }
   } else {
     setError("No changes to update."); // Set error when no changes are detected
     console.log("No changes to update.");
+  }
+};
+
+const handleTokenRefresh = async () => {
+  try {
+    // Assuming there's a function to refresh the token and get the new user data
+    const refreshedUserData = await refreshToken();
+    setUser(refreshedUserData);
+  } catch (error) {
+    console.error("Failed to refresh token:", error);
+    logout(); // Clear user data if token refresh fails
   }
 };
 

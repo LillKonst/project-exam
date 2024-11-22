@@ -1,6 +1,7 @@
 import UploadGallery from "../../components/UploadVenue/UploadGallery";
 import { useState } from "react";
 import { useCreateVenue } from "../../hooks/useCreateVenue";
+import { useNavigate } from "react-router-dom"; 
 
 export default function RegisterVenue() {
   const [maxGuests, setMaxGuests] = useState(20); 
@@ -8,6 +9,7 @@ export default function RegisterVenue() {
   const [images, setImages] = useState([]); 
   const [currentImage, setCurrentImage] = useState(""); 
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +41,7 @@ export default function RegisterVenue() {
     try {
       const createdVenue = await useCreateVenue(formData);
       console.log("Venue created successfully:", createdVenue);
+      navigate("/profile");
     } catch (error) {
       console.error("Failed to create venue:", error.message);
     }

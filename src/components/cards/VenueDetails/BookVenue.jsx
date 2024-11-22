@@ -133,10 +133,10 @@
 import "react-datepicker/dist/react-datepicker.css";
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
-// import useCreateBooking from "../../../hooks/useCreateBooking";
+import useCreateBooking from "../../../hooks/useCreateBooking";
 
 export default function BookVenue({ venue }) {
-  // const { mutate: createBooking, isLoading, error } = useCreateBooking();
+  const { mutate: createBooking, isLoading, error } = useCreateBooking();
   const [dateFrom, setDateFrom] = useState(null);
   const [dateTo, setDateTo] = useState(null);
   const [guests, setGuests] = useState(1);
@@ -175,7 +175,7 @@ export default function BookVenue({ venue }) {
       venueId: venue.id
     };
 
-    // createBooking(newBooking); 
+     createBooking(newBooking); 
   };
 
   return (
