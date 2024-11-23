@@ -12,7 +12,7 @@ export default function useMyVenues(user) {
     const response = await fetch(
       `${import.meta.env.VITE_APP_BASEURL}holidaze/profiles/${
         user.name
-      }/venues`,
+      }/venues?_bookings=true`,
       {
         headers: {
           "X-Noroff-API-Key": import.meta.env.VITE_APP_API_KEY,

@@ -2,6 +2,7 @@ import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import VenueLinkSm from "../cards/VenueLinkSm/VenueLinkSm";
 import useMyVenues from "../../hooks/useMyVenues";
+import MyVenueCard from "../cards/MyVenueCard/MyVenueCard";
 
 
 export default function MyVenues() {
@@ -24,9 +25,9 @@ export default function MyVenues() {
         <h2 className="text-2xl font-semibold">MY VENUES ({user?._count?.venues || 0})</h2>
         <div>
         {venues.length > 0 ? (
-          <div className="grid grid-cols-12 gap-1">
+          <div className="flex flex-wrap">
             {venues.map((venue) => (
-              <VenueLinkSm key={venue.id} venue={venue} />
+              <MyVenueCard key={venue.id} venue={venue} bookings={venue.bookings} />
             ))}
           </div>
         ) : (

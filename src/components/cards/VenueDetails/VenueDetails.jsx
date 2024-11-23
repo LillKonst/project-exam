@@ -142,7 +142,7 @@ export default function VenueDetails({ venue }) {
         <p className="m-2 text-gray-600">Created: {formatDate(venue.created)}</p>
 
       </div>
-      <BookVenue venue={venue}/>
+      <BookVenue venue={venue} bookings={venue.bookings}/>
       <div>
         {venue.owner?.avatar && venue.owner?.avatar.url && (
           <img

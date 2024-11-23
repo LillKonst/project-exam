@@ -10,7 +10,7 @@ async function createBooking(newBooking) {
   }
 
   const response = await fetch(
-    `${import.meta.env.VITE_APP_BASEURL}holidaze/bookings`,
+    `${import.meta.env.VITE_APP_BASEURL}holidaze/bookings?_venue=true`,
     {
       method: "POST",
       headers: {
