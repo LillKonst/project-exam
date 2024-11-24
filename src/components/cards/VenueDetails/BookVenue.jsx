@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import useCreateBooking from "../../../hooks/useCreateBooking";
 import { parseISO, eachDayOfInterval , isSameDay} from "date-fns";
+import { useNavigate } from "react-router-dom";
 
 export default function BookVenue({ venue, bookings }) {
   console.log("Bookings", bookings);
@@ -13,6 +14,8 @@ export default function BookVenue({ venue, bookings }) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [taxesAndFees, setTaxesAndFees] = useState(0);
   const [basePrice, setBasePrice] = useState(0);
+  const [success, setSuccess] = useState(false); // Success message state
+  const navigate = useNavigate(); // For redirection
   const maxGuests = venue?.maxGuests || 10;
 
   const calculateTotalPrice = () => {
@@ -48,18 +51,22 @@ export default function BookVenue({ venue, bookings }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-   
     const newBooking = {
       dateFrom: dateFrom.toISOString(),
       dateTo: dateTo.toISOString(),
       guests,
-      venueId: venue.id
+      venueId: venue.id,
     };
 
-     createBooking(newBooking); 
+    createBooking(newBooking, {
+      onSuccess: () => {
+        setSuccess(true); 
+        setTimeout(() => {
+          navigate("/profile"); 
+        }, 3000); 
+      },
+    });
   };
-
   return (
     <div className="flex flex-col justify-center items-center bg-customBlue p-6 rounded-2xl m-3 shadow-md">
       <form onSubmit={handleSubmit} className="flex flex-col mx-5 my-2">
@@ -134,8 +141,13 @@ export default function BookVenue({ venue, bookings }) {
             <p className="text-xl font-semibold">{totalPrice.toFixed(2)}</p>
           </div>
         </div>
-        {/* {error && <p>Error: {error.message}</p>} */}
+        {error && <p>Error: {error.message}</p>}
       </form>
+      {success && (
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white text-2xl p-4 rounded shadow-md">
+          Booking successful!
+        </div>
+      )}
     </div>
   );
 }

@@ -6,7 +6,7 @@ const VenueContext = createContext();
 
 async function fetchVenue(id) {
   const response = await fetch(
-    `${import.meta.env.VITE_APP_BASEURL}holidaze/venues/${id}`
+    `${import.meta.env.VITE_APP_BASEURL}holidaze/venues/${id}?_bookings=true`
   );
   if (!response.ok) {
     throw new Error("Network response was not ok");

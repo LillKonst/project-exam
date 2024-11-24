@@ -9,6 +9,7 @@ export default function VenueSpecific() {
     const { venue, isLoading, isError } = useVenue();
     
     
+    
 
     if (isLoading) {
         return <div>Loading venue details...</div>;
@@ -21,6 +22,7 @@ export default function VenueSpecific() {
     if (!venue) {
         return <div>No venue data available.</div>;
     }
+    
     
     return (
         <div>

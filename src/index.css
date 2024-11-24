@@ -52,7 +52,7 @@ body {
 }
 
 .booked-date {
-  background-color: rgba(128, 128, 128, 0.5); /* Transparent gray */
   pointer-events: none; /* Prevent interaction */
   border-radius: 50%; /* Match the calendar's default day styling */
+  color: red;
 }
