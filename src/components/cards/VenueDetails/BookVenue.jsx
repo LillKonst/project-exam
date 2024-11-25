@@ -68,12 +68,12 @@ export default function BookVenue({ venue, bookings }) {
     });
   };
   return (
-    <div className="flex flex-col justify-center items-center bg-customBlue p-6 rounded-2xl m-3 shadow-md">
+    <div className="flex flex-col items-center bg-customBlue h-fit p-6 rounded-2xl m-3 shadow-md">
       <form onSubmit={handleSubmit} className="flex flex-col mx-5 my-2">
-        {/* <div className="flex self-start mb-2">
+        <div className="flex self-start my-2">
           <h2 className="text-2xl">{venue.price}</h2>
           <h2 className="ms-2 text-gray-600 text-2xl">night</h2>
-        </div> */}
+        </div>
 
         <div className="flex justify-center items-center">
           <DatePicker
@@ -85,7 +85,7 @@ export default function BookVenue({ venue, bookings }) {
             minDate={new Date()}
             excludeDates={excludedDates}
             placeholderText="CHECK-IN"
-            className="datepicker-input text-center me-1 hover:border hover:border-[#a0aec0] focus:outline-none cursor-pointer rounded-md bg-white p-2 w-32"
+            className="datepicker-input text-center me-1 hover:border hover:border-[#a0aec0] focus:outline-none cursor-pointer rounded bg-white p-2 w-32"
             dayClassName={(date) => (isBookedDate(date) ? "booked-date" : "")}
           />
           <DatePicker
@@ -97,7 +97,7 @@ export default function BookVenue({ venue, bookings }) {
             minDate={dateFrom}
             excludeDates={excludedDates}
             placeholderText="CHECK-OUT"
-            className="datepicker-input text-center ms-1 cursor-pointer hover:border hover:border-[#a0aec0] focus:outline-none rounded-md bg-white p-2 w-32"
+            className="datepicker-input text-center ms-1 cursor-pointer hover:border hover:border-[#a0aec0] focus:outline-none rounded bg-white p-2 w-32"
             dayClassName={(date) => (isBookedDate(date) ? "booked-date" : "")}
           />
         </div>
@@ -120,12 +120,12 @@ export default function BookVenue({ venue, bookings }) {
 
         <button
           type="submit"
-          className="mt-4 bg-yellow-300 text-xl font-semibold py-2 px-6 rounded-md hover:customBlue transition duration-200 ease-in-out"
+          className="mt-4 bg-customYellow text-customWhite text-xl font-semibold py-2 px-6 rounded-md transition duration-200 ease-in-out"
         >
           BOOK
         </button>
 
-        <div className="flex flex-col w-full my-2">
+        <div className="flex flex-col w-full my-4">
           <div className="flex justify-between">
             <p>Price per night</p>
             <p>{venue.price}</p>

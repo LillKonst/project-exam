@@ -3,10 +3,31 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "HedvigLettersSans";
-  src: url("../public/fonts/HedvigLettersSans-Regular.ttf") format("woff2");
+  font-family: "AlbertSans";
+  src: url("../public/fonts/Albert_Sans/AlbertSans-VariableFont_wght.ttf")
+    format("woff2");
   font-weight: 100 900;
   font-style: normal;
+}
+
+@font-face {
+  font-family: "LongCang";
+  src: url("../public/fonts/Long_Cang/LongCang-Regular.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+div {
+  font-family: "AlbertSans";
+}
+
+.secondFont {
+  font-family: "LongCang";
 }
 
 html,

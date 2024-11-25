@@ -4,12 +4,13 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        custom: ["HedvigLettersSans", "sans"],
+        custom: ["AlbertSans", "sans"],
       },
       colors: {
-        customBlue: "#4D83C3",
+        customBlue: "#87E0FD",
         blueHover: "#79C6F6",
-        customWhite: "#F1F8F9",
+        customWhite: "##FBFAFE",
+        customYellow: "#FFD82A",
       },
     },
   },
