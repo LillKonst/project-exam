@@ -45,10 +45,10 @@ export default function VenueDetails({ venue }) {
         <GalleryModal media={venue.media} isGalleryOpen={isGalleryOpen} closeGallery={closeGallery}/>
       )}
             
-      <div className="flex flex-col -mt-12 mx-12 w-10/12 z-10 p-5 bg-white shadow-md rounded-md ">
-        <div className="flex m-8 mb-5 pb-5 border-b border-customYellow">
+      <div className="flex flex-col -mt-12 mx-12 w-10/12 z-10 p-2 md:p-5 bg-white shadow-md rounded-md ">
+        <div className="flex flex-col md:flex-row m-3 md:m-8 md:mb-5 pb-5 border-b border-customYellow">
           <div className="flex flex-col">
-            <div className="flex flex-row">
+            <div className="flex flex-row flex-wrap">
               <h2 className="text-4xl ms-1">{venue.name}</h2>
               
               <div className="flex m-2">
@@ -62,7 +62,7 @@ export default function VenueDetails({ venue }) {
           <h3 className="text-lg ms-2 text-gray-600">{venue.location.city} {venue.location.country} || Location not available</h3>
         </div>
         
-        <div className="flex flex-col items-center ms-auto m-2">
+        <div className="flex flex-col items-start md:items-center md:ms-auto m-2">
           <div className="flex">
             <p className="text-3xl me-1">${venue.price}</p>
             <p className="text-3xl text-gray-600">night</p>
@@ -71,7 +71,7 @@ export default function VenueDetails({ venue }) {
         </div>
       </div>
         
-        <div className="flex flex-row">
+        <div className="flex flex-col lg:flex-row">
           <div className="w-full">
           {venue.meta && Object.values(venue.meta).some(value => value) && (
             <div className="bg-white my-2 ms-6 py-3 rounded w-fit px-4">              
@@ -120,9 +120,9 @@ export default function VenueDetails({ venue }) {
         <p className="m-2 mx-6 px-3 text-xl text-gray-600">Created: {formatDate(venue.created)}</p>
 
       </div>
-      <div>
+      <div className="flex flex-col md:flex-row">
         <BookVenue venue={venue} bookings={venue.bookings}/>
-        <div> owner
+        <div className="bg-customBlue h-44 w-full rounded-lg p-4"> owner
           {venue.owner?.avatar && venue.owner?.avatar.url && (
             <img
               src={venue.owner.avatar.url}

@@ -9,7 +9,7 @@ export default function GalleryModal({ media, closeGallery }) {
   };
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg p-4 max-w-4xl w-full flex flex-col">
+      <div className="bg-white rounded-lg p-4 max-w-4xl w-fit md:w-full flex flex-col">
         <button
           onClick={closeGallery}
           className="text-gray-600 text-2xl font-semibold p-2 hover:text-gray-900 self-end mb-2"
