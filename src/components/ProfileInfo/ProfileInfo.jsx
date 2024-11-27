@@ -10,8 +10,7 @@ export default function ProfileInfo() {
   if (!user) {
     return <div>No user information available.</div>
   }
-  console.log(user.accessToken);
-  
+   
   const userData = user; 
 
   const toggleOverlay = () => {
@@ -23,7 +22,7 @@ export default function ProfileInfo() {
   }
 
   return (
-    <div className="flex w-full relative  p-3 m-1 md:m-3">
+    <div className="flex w-3/4 relative p-3 m-1 md:m-3">
       {userData.avatar && userData.avatar.url && (
         <img
         src={userData.avatar.url}

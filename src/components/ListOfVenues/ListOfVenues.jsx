@@ -23,10 +23,10 @@ export default function ListOfVenues() {
 
 
     return (
-        <div className="flex flex-col justify-center items-center mx-2">
+        <div className="flex flex-col justify-center items-center mx-8">
           <div className="flex items-center justify-start w-full px-5">
-              <h1 className=" text-xl sm:text-2xl md:text-4xl">Your Next Holidaze</h1>
-              <Searchbar className="ms-auto"/>
+              {/* <h1 className=" text-xl sm:text-2xl md:text-4xl">Your Next Holidaze</h1>
+              <Searchbar className="ms-auto"/> */}
             </div>
             <div className="grid grid-cols-12 gap-1 w-full mx-2">
             {venues && venues.length > 0 ? (

@@ -31,20 +31,28 @@ export default function UserIcon() {
     };
 
     return (
-    <nav className="flex flex-col items-end">
-        <div onClick={toggleMenu} className="relative flex items-center border border-customWhite/50 m-3 mt-4 px-2 py-2 rounded-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-list me-1 text-customWhite" viewBox="0 0 16 16">
+    <nav className="flex flex-col items-end relative">
+        <div onClick={toggleMenu} className="flex items-center px-2 py-2">
+            {/* <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-list me-1 text-customBlack" viewBox="0 0 16 16">
             <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-            </svg>
+            </svg> */}
 
             {user ? (
+              <div className="flex gap-1 justify-center items-center">
                 <img
                     src={user.avatar?.url || "https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_1280.png"}
                     alt="User Avatar"
                     className="w-[20px] h-[20px] rounded-full object-cover"
                 />
+
+                <p>{user.name}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" className="bi bi-caret-down-fill text-gray-600" viewBox="0 0 16 16">
+                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                  </svg>
+                
+              </div>
             ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-person-circle text-customWhite" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-person-circle text-customBlack" viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                     <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                 </svg>
@@ -52,15 +60,15 @@ export default function UserIcon() {
         </div>
         <ul className={`${
             isMenuOpen ? "flex" : "hidden"
-            } absolute top-12 right-6 mt-5 flex flex-col border border-white shadow-md bg-white rounded-xl`}>
+            } absolute top-12 right-1 flex flex-col shadow-md bg-customWhite rounded-xl`}>
             {!user ? ( 
                     <div className="p-3">
-                        <li className="px-3 py-2 hover:bg-gray-200">
+                        <li className="px-3 py-2 hover:font-semibold">
                             <button onClick={() => { setIsRegisterOpen(true); setIsMenuOpen(false); }} className="text-md">
                                 REGISTER
                             </button>
                         </li>
-                        <li className="px-3 py-2 hover:bg-gray-200">
+                        <li className="px-3 py-2 hover:font-semibold">
                             <button onClick={() => { setIsLoginOpen(true); setIsMenuOpen(false); }} className="text-md">
                                 LOGIN
                             </button>
@@ -68,17 +76,17 @@ export default function UserIcon() {
                     </div>
                 ) : (
                     <div className="p-3">
-                        <li className="px-3 py-2 hover:bg-gray-200 text-lg">
+                        <li className="px-3 py-2 hover:font-semibold text-lg">
                             <Link to="/Profile" onClick={() => setIsMenuOpen(false)} className="text-md">
                                 PROFILE
                             </Link>
                         </li>
-                        <li className="px-3 py-2 hover:bg-gray-200 text-lg">
-                          <Link to="RegisterVenue" onClick={() => setIsMenuOpen(false)} className="text-md">
+                        <li className="px-3 py-2 hover:font-semibold text-lg">
+                          <Link to="RegisterVenue" onClick={() => setIsMenuOpen(false)} className="text-md whitespace-nowrap">
                             REGISTER VENUE
                           </Link>
                         </li>
-                        <li className="px-3 py-2 mt-3 hover:bg-gray-200">
+                        <li className="px-3 py-2 mt-3 hover:font-semibold">
                             <button onClick={() => { 
                                 logout(); 
                                 setIsMenuOpen(false); 

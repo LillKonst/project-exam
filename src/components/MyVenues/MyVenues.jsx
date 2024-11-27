@@ -12,6 +12,14 @@ export default function MyVenues() {
   console.log("MyComponent rendered with user:", user);
   console.log("Venues:", venues);
 
+  
+  const venueCount = venues.length;
+
+  const refreshList = async () => {
+    const fetchedVenues = await fetchVenues();
+    setVenues(fetchedVenues);
+  };
+
   if (loading) {
     return <p>Loading venues...</p>;
   }
@@ -22,12 +30,12 @@ export default function MyVenues() {
   return (
     <div className="flex flex-col m-5">
       <div className="flex flex-col">
-        <h2 className="text-2xl font-semibold">MY VENUES ({user?._count?.venues || 0})</h2>
+        <h2 className="text-2xl font-semibold">MY VENUES ({venueCount})</h2>
         <div>
         {venues.length > 0 ? (
           <div className="flex flex-wrap">
             {venues.map((venue) => (
-              <MyVenueCard key={venue.id} venue={venue} bookings={venue.bookings} />
+              <MyVenueCard key={venue.id} venue={venue} bookings={venue.bookings} refreshList={refreshList} />
             ))}
           </div>
         ) : (

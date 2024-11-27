@@ -45,14 +45,14 @@ export default function Navbar({ className }) {
                     bg-customBlue md:bg-transparent md:w-auto 
                      md:items-center md:justify-between`}>
             <li className="px-2">
-                <Link to="" onClick={() => setIsMenuOpen(false)}  className={`text-lg text-customWhite ${
+                <Link to="" onClick={() => setIsMenuOpen(false)}  className={`text-lg text-customBlack ${
                             location.pathname === "/" ? "font-semibold" : ""
                         }`}>HOME</Link>
             </li>
             <li className="px-2">
-                <Link to="/AllVenues" onClick={() => setIsMenuOpen(false)}  className={`text-lg text-customWhite ${
+                <Link to="/AllVenues" onClick={() => setIsMenuOpen(false)}  className={`text-lg text-customBlack ${
                             location.pathname === "/AllVenues" ? "font-semibold" : ""
-                        }`}>VENUES</Link>
+                        }`}>EXPLORE VENUES</Link>
             </li>
             
         </ul>

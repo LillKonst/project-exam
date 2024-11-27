@@ -23,10 +23,10 @@ export default function FilterButton() {
   };
 
   return (
-    <div className="flex">
+    <div className="flex ms-auto">
       <button 
       onClick={toggleFilterVisibility}
-      className="mx-2 my-1 border border-gray-400 rounded-xl p-2"
+      className="mx-2 my-1 border border-gray-300 rounded-xl p-2 text-sm font-semibold"
       >
         FILTER
       </button>

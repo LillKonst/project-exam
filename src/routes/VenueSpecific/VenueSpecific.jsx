@@ -1,14 +1,8 @@
-
-import useFetchVenue from "../../hooks/useFetchVenue.js";
 import VenueDetails from "../../components/cards/VenueDetails/VenueDetails"
-import { useVenue } from "../../context/VenueContext.jsx";
-import BookVenue from "../../components/cards/VenueDetails/BookVenue.jsx";
+import useFetchVenue from "../../hooks/useFetchVenue.js";
 
 export default function VenueSpecific() {
-    // const { venue, isLoading, isError } = useFetchVenue();
-    const { venue, isLoading, isError } = useVenue();
-    
-    
+    const { data: venue, isLoading, isError, error } = useFetchVenue();
     
 
     if (isLoading) {
@@ -16,6 +10,7 @@ export default function VenueSpecific() {
     }
 
     if (isError) {
+      console.error("Error fetching venue:", error);
         return <div>Error loading venue details.</div>;
     }
 

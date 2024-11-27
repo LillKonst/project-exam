@@ -120,7 +120,7 @@ export default function VenueDetails({ venue }) {
         <p className="m-2 mx-6 px-3 text-xl text-gray-600">Created: {formatDate(venue.created)}</p>
 
       </div>
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row lg:flex-col">
         <BookVenue venue={venue} bookings={venue.bookings}/>
         <div className="bg-customBlue h-44 w-full rounded-lg p-4"> owner
           {venue.owner?.avatar && venue.owner?.avatar.url && (
