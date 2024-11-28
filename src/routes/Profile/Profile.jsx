@@ -2,7 +2,6 @@ import ProfileInfo from "../../components/ProfileInfo/ProfileInfo"
 import MyVenues from "../../components/MyVenues/MyVenues";
 import MyBookings from "../../components/MyBookings/MyBookings";
 import { useAuth } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
 
 export default function Profile() {
   const { isVenueManager } = useAuth();
@@ -13,7 +12,6 @@ export default function Profile() {
           <>
             <MyBookings />
             <MyVenues />
-            {/* <BookedVenues /> */}
           </>
         ) : (
             <MyBookings />

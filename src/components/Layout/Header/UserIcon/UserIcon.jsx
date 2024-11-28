@@ -31,13 +31,9 @@ export default function UserIcon() {
     };
 
     return (
-    <nav className="flex flex-col items-end relative">
+    <nav className="flex flex-col items-end relative ms-auto">
         <div onClick={toggleMenu} className="flex items-center px-2 py-2">
-            {/* <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-list me-1 text-customBlack" viewBox="0 0 16 16">
-            <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-            </svg> */}
-
-            {user ? (
+                 {user ? (
               <div className="flex gap-1 justify-center items-center">
                 <img
                     src={user.avatar?.url || "https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_1280.png"}
@@ -45,7 +41,7 @@ export default function UserIcon() {
                     className="w-[20px] h-[20px] rounded-full object-cover"
                 />
 
-                <p>{user.name}</p>
+                <p className="text-lg">{user.name}</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" className="bi bi-caret-down-fill text-gray-600" viewBox="0 0 16 16">
                   <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                   </svg>
@@ -82,7 +78,7 @@ export default function UserIcon() {
                             </Link>
                         </li>
                         <li className="px-3 py-2 hover:font-semibold text-lg">
-                          <Link to="RegisterVenue" onClick={() => setIsMenuOpen(false)} className="text-md whitespace-nowrap">
+                          <Link to="/RegisterVenue" onClick={() => setIsMenuOpen(false)} className="text-md whitespace-nowrap">
                             REGISTER VENUE
                           </Link>
                         </li>

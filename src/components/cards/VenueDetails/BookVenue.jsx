@@ -68,7 +68,7 @@ export default function BookVenue({ venue, bookings }) {
     });
   };
   return (
-    <div className="flex flex-col items-center bg-customBlue h-fit p-6 rounded-2xl m-3 shadow-md">
+    <div className="flex flex-col items-center bg-customBlue h-fit p-6 rounded-2xl m-3 shadow-lg">
       <form onSubmit={handleSubmit} className="flex flex-col mx-5 my-2">
         <div className="flex self-start my-2">
           <h2 className="text-2xl">{venue.price}</h2>
@@ -120,7 +120,7 @@ export default function BookVenue({ venue, bookings }) {
 
         <button
           type="submit"
-          className="mt-4 bg-customYellow text-customWhite text-xl font-semibold py-2 px-6 rounded-md transition duration-200 ease-in-out"
+          className="mt-4 bg-customRed text-customWhite text-xl font-semibold py-2 px-6 rounded-md transition duration-200 ease-in-out"
         >
           BOOK
         </button>

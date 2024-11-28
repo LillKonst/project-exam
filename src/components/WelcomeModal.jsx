@@ -1,17 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-export default function WelcomeModal() {
+export default function WelcomeModal({ onClose }) {
   const navigate = useNavigate();
   const { user } = useAuth();
 
   const handleYes = () => {
-    onclose();
+    onClose();
     navigate("/Profile");
   };
 
   const handleNo = () => {
-    onclose();
+    onClose();
   };
 
   return(

@@ -40,7 +40,7 @@ export default function BookingCard({ booking, venue }) {
         </div>
 
         <p className="">
-          Number of Guests: {venue.maxGuests}
+          Number of Guests: {booking.guests}
         </p>
         
         <div className="mb-2">

@@ -1,11 +1,16 @@
 import { useState } from "react";
+import venueDefaultImg from "../../../images/venue-default-img.png"
 
 export default function GalleryModal({ media, closeGallery }) {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  
+  const hasImages = Array.isArray(media) && media.length > 0;
 
    const selectImage = (index) => {
     setSelectedImageIndex(index);
+
+    
   };
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
@@ -17,10 +22,13 @@ export default function GalleryModal({ media, closeGallery }) {
            ✕
         </button>
 
+        {hasImages ? (
+          <>
+
         <div className="flex justify-center mb-4">
         <img 
-          src={media[selectedImageIndex].url} 
-          alt={media[selectedImageIndex].alt || "Gallery image"} 
+          src={media[selectedImageIndex]?.url } 
+          alt={media[selectedImageIndex]?.alt || "Gallery image"} 
           className="object-cover w-full h-96 rounded-md"
         />
         </div>
@@ -43,6 +51,12 @@ export default function GalleryModal({ media, closeGallery }) {
           ))}
         </div>
       )}
+       </>
+        ) : (
+          <div className="text-center text-gray-600 text-lg">
+            No images for this venue
+          </div>
+        )}
       </div>
     </div>
      );

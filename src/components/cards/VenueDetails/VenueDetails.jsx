@@ -3,6 +3,8 @@ import React from "react"
 import GalleryModal from "./GalleryModal";
 import BookVenue from "./BookVenue";
 import MapOfVenue from "../../../MapOfVenue/MapOfVenue";
+import venueDefaultImg from "../../../images/venue-default-img.png"
+import OwnerCard from "./OwnerCard";
 
 export default function VenueDetails({ venue }) { 
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -29,11 +31,11 @@ export default function VenueDetails({ venue }) {
     <div className="flex flex-col items-center">
       <div className="relative w-full h-[70vh]">
         <img 
-          src={venue.media[0]?.url} 
+          src={venue.media[0]?.url || venueDefaultImg } 
           alt={venue.media[0]?.alt || "Product image"} 
           className="object-cover w-full h-full rounded"
         />
-        <button type="button" onClick={openGallery} className="bg-customYellow font-semibold text-xl px-6 py-5 absolute top-5 right-5 m-1 rounded-md flex items-center">
+        <button type="button" onClick={openGallery} className="bg-customYellow font-medium text-lg p-3 absolute top-5 right-5 m-1 rounded-md flex items-center">
           GALLERY 
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-arrow-right ms-1" viewBox="0 0 16 16">
             <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
@@ -59,7 +61,7 @@ export default function VenueDetails({ venue }) {
               ))}
               </div>
           </div>
-          <h3 className="text-lg ms-2 text-gray-600">{venue.location.city} {venue.location.country} || Location not available</h3>
+          <h3 className="text-lg ms-2 text-gray-600">{ venue.location?.city && venue.location?.country ? `${venue.location.city} ${venue.location.country}` : "Location not available"}</h3>
         </div>
         
         <div className="flex flex-col items-start md:items-center md:ms-auto m-2">
@@ -122,18 +124,7 @@ export default function VenueDetails({ venue }) {
       </div>
       <div className="flex flex-col md:flex-row lg:flex-col">
         <BookVenue venue={venue} bookings={venue.bookings}/>
-        <div className="bg-customBlue h-44 w-full rounded-lg p-4"> owner
-          {venue.owner?.avatar && venue.owner?.avatar.url && (
-            <img
-              src={venue.owner.avatar.url}
-              alt={venue.owner.avatar.alt || "User Avatar"}
-              className="w-16 h-16 rounded-full mb-4"
-            />
-          )} 
-          <h3>{venue.owner?.name}</h3>
-          <p>{venue.owner?.email}</p>
-          <p>{venue.owner?.bio}</p> 
-        </div>
+        <OwnerCard venue={venue}/>
       </div>
     </div>   
   </div>

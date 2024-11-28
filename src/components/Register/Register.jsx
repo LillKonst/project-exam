@@ -41,7 +41,6 @@ export default function Register({ onClose, onRegisterSuccess }) {
         onSuccess: (registerData) => {
           console.log("Registration successful. Data:", registerData);
 
-          // Automatically log in the user after registration
           console.log("Attempting to log in with:", {
             email: formData.email,
             password: formData.password,
@@ -52,7 +51,7 @@ export default function Register({ onClose, onRegisterSuccess }) {
             {
               onSuccess: (loginData) => {
                 console.log("Login successful. Data:", loginData);
-                contextLogin(loginData); // Update AuthContext
+                contextLogin(loginData); 
                 localStorage.setItem("user", JSON.stringify(loginData));
                 onRegisterSuccess?.();
               },
