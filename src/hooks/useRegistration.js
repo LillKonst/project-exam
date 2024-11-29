@@ -12,7 +12,7 @@ const useRegister = () => {
             "Content-Type": "application/json",
             "X-Noroff-API-Key": import.meta.env.VITE_APP_API_KEY,
           },
-        }
+        },
       );
       if (!response.ok) {
         const errorText = await response.text();

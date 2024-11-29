@@ -10,7 +10,6 @@ export default function UploadGallery({
   selectedImageIndex,
   setSelectedImageIndex,
 }) {
-  
   // const handleAddImage = (e) => {
   //   e.preventDefault();
   //   if (!currentImage.trim()) {
@@ -29,15 +28,14 @@ export default function UploadGallery({
   //   setCurrentImage(""); // Clear the input field
   //   console.log("Input cleared. Current image value:", currentImage);
   // };
-  
-    const handleAddImage = (e) => {
+
+  const handleAddImage = (e) => {
     e.preventDefault();
     if (!currentImageUrl.trim()) {
       console.log("Empty input. No image added.");
       return;
     }
 
-   
     const newImage = {
       url: currentImageUrl,
       alt: currentImageAlt || "Default image alt",
@@ -49,37 +47,39 @@ export default function UploadGallery({
       return newImages;
     });
 
-    setCurrentImageUrl(""); 
-    setCurrentImageAlt(""); 
+    setCurrentImageUrl("");
+    setCurrentImageAlt("");
   };
 
   const handleDeleteImage = (indexToDelete) => {
     console.log("Deleting image at index:", indexToDelete);
     setImages((prev) => {
       const newImages = prev.filter((_, index) => index !== indexToDelete);
-      console.log("Images after deletion:", newImages); 
+      console.log("Images after deletion:", newImages);
       return newImages;
     });
-
   };
 
   return (
     <div className=" mx-2 w-full max-w-[450px]">
       <h2 className="secondFont text-3xl mb-2">Upload a Gallery:</h2>
       <div className="flex flex-col">
-        
         <div className="flex flex-col">
-        <label htmlFor="url" className="mx-2 my-1">Image URL</label>
-        <input
-          name="url"
-          type="url"
-          value={currentImageUrl}
-          onChange={(e) => setCurrentImageUrl(e.target.value)}
-          className="border rounded-lg p-2 w-full mb-3"
-        />
+          <label htmlFor="url" className="mx-2 my-1">
+            Image URL
+          </label>
+          <input
+            name="url"
+            type="url"
+            value={currentImageUrl}
+            onChange={(e) => setCurrentImageUrl(e.target.value)}
+            className="border rounded-lg p-2 w-full mb-3"
+          />
         </div>
         <div className="flex flex-col">
-         <label htmlFor="alt" className="mx-2 my-1">Alt Text (Optional)</label>
+          <label htmlFor="alt" className="mx-2 my-1">
+            Alt Text (Optional)
+          </label>
           <input
             name="alt"
             type="text"
@@ -93,8 +93,8 @@ export default function UploadGallery({
           className="bg-customRed shadow-sm w-fit text-customWhite px-4 py-2 rounded-lg font-medium mb-5"
         >
           Add
-        </button> 
-</div>
+        </button>
+      </div>
       <div className="flex justify-center mb-4">
         {images[selectedImageIndex] ? (
           <img
@@ -104,15 +104,17 @@ export default function UploadGallery({
           />
         ) : (
           <div className="flex items-center justify-center w-full max-w-md h-64 rounded-md shadow-lg border border-gray-300 bg-gray-100">
-      <div className="text-center">
-        <div className="text-gray-400 text-xl font-semibold mb-2">No images</div>
-        <div className="flex gap-2">
-          <div className="w-16 h-16 bg-gray-300 rounded-md"></div>
-          <div className="w-16 h-16 bg-gray-300 rounded-md"></div>
-          <div className="w-16 h-16 bg-gray-300 rounded-md"></div>
-        </div>
-      </div>
-    </div>
+            <div className="text-center">
+              <div className="text-gray-400 text-xl font-semibold mb-2">
+                No images
+              </div>
+              <div className="flex gap-2">
+                <div className="w-16 h-16 bg-gray-300 rounded-md"></div>
+                <div className="w-16 h-16 bg-gray-300 rounded-md"></div>
+                <div className="w-16 h-16 bg-gray-300 rounded-md"></div>
+              </div>
+            </div>
+          </div>
         )}
       </div>
 
@@ -124,15 +126,16 @@ export default function UploadGallery({
               className="relative w-20 h-20 rounded-md cursor-pointer border overflow-hidden"
               onClick={() => setSelectedImageIndex(index)}
             >
-
               <img
                 src={image.url}
                 alt={image.alt || `Thumbnail ${index + 1}`}
                 className={`w-full h-full object-cover ${
-                  selectedImageIndex === index ? "border-blue-500" : "border-gray-300"
+                  selectedImageIndex === index
+                    ? "border-blue-500"
+                    : "border-gray-300"
                 }`}
               />
- 
+
               <button
                 onClick={(e) => {
                   e.stopPropagation();

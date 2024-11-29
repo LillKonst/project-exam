@@ -80,7 +80,10 @@ export default function NewCalendarSearch({ onSearchSubmit, className }) {
       >
         {/* Location / Name Input */}
         <div className="flex flex-col w-full">
-          <label htmlFor="location" className="text-gray-700 font-semibold mb-1">
+          <label
+            htmlFor="location"
+            className="text-gray-700 font-semibold mb-1"
+          >
             Where Do You Wanna Go
           </label>
           <input
@@ -94,7 +97,10 @@ export default function NewCalendarSearch({ onSearchSubmit, className }) {
 
         {/* Check-in Date */}
         <div className="flex flex-col w-full">
-          <label htmlFor="checkInDate" className="text-gray-700 font-semibold mb-1">
+          <label
+            htmlFor="checkInDate"
+            className="text-gray-700 font-semibold mb-1"
+          >
             Check-in Date
           </label>
           <DatePicker
@@ -112,7 +118,10 @@ export default function NewCalendarSearch({ onSearchSubmit, className }) {
 
         {/* Check-out Date */}
         <div className="flex flex-col w-full">
-          <label htmlFor="checkOutDate" className="text-gray-700 font-semibold mb-1">
+          <label
+            htmlFor="checkOutDate"
+            className="text-gray-700 font-semibold mb-1"
+          >
             Check-out Date
           </label>
           <DatePicker
@@ -157,7 +166,6 @@ export default function NewCalendarSearch({ onSearchSubmit, className }) {
       </form>
 
       <ListOfVenues venues={filteredResults} />
-
     </div>
   );
 }

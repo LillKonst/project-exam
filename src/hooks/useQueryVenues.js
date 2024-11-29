@@ -51,7 +51,7 @@ const fetchVenues = async ({ pageParam = page }) => {
   const response = await fetch(
     `${
       import.meta.env.VITE_APP_BASEURL
-    }holidaze/venues?sort=created&sortOrder=desc&limit=${limit}&page=${pageParam}`
+    }holidaze/venues?sort=created&sortOrder=desc&limit=${limit}&page=${pageParam}`,
   );
   if (!response.ok) {
     throw new Error("Failed to fetch venues");

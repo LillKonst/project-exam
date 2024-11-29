@@ -18,7 +18,7 @@ export async function useCreateVenue(formData) {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
-      }
+      },
     );
 
     if (!response.ok) {

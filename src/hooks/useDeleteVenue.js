@@ -37,7 +37,7 @@ async function deleteVenueAPI(id) {
         "X-Noroff-API-Key": import.meta.env.VITE_APP_API_KEY,
         Authorization: `Bearer ${token}`,
       },
-    }
+    },
   );
 
   if (!response.ok) {

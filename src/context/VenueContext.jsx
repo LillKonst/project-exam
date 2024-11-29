@@ -1,12 +1,12 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 const VenueContext = createContext();
 
 async function fetchVenue(id) {
   const response = await fetch(
-    `${import.meta.env.VITE_APP_BASEURL}holidaze/venues/${id}?_bookings=true?_owner=true`
+    `${import.meta.env.VITE_APP_BASEURL}holidaze/venues/${id}?_bookings=true?_owner=true`,
   );
   if (!response.ok) {
     throw new Error("Network response was not ok");
@@ -18,14 +18,17 @@ async function fetchVenue(id) {
 
 export const VenueProvider = ({ children }) => {
   const { id } = useParams();
-  const { data: venue, isLoading, isError } = useQuery({
+  const {
+    data: venue,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["venue", id],
     queryFn: () => fetchVenue(id),
     enabled: !!id,
-});
+  });
 
-
-return (
+  return (
     <VenueContext.Provider value={{ venue, isLoading, isError }}>
       {children}
     </VenueContext.Provider>

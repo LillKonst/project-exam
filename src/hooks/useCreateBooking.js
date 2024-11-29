@@ -19,7 +19,7 @@ async function createBooking(newBooking) {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(newBooking),
-    }
+    },
   );
 
   if (!response.ok) {
@@ -29,7 +29,7 @@ async function createBooking(newBooking) {
     throw new Error(
       `Failed to create booking: ${
         errorResponse.message || response.statusText
-      }`
+      }`,
     );
   }
 

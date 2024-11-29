@@ -2,7 +2,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import useCreateBooking from "../../../hooks/useCreateBooking";
-import { parseISO, eachDayOfInterval , isSameDay} from "date-fns";
+import { parseISO, eachDayOfInterval, isSameDay } from "date-fns";
 import { useNavigate } from "react-router-dom";
 
 export default function BookVenue({ venue, bookings }) {
@@ -21,7 +21,9 @@ export default function BookVenue({ venue, bookings }) {
   const calculateTotalPrice = () => {
     if (dateFrom && dateTo) {
       const pricePerNight = venue.price;
-      const nightDifference = Math.ceil((dateTo - dateFrom) / (1000 * 3600 * 24));
+      const nightDifference = Math.ceil(
+        (dateTo - dateFrom) / (1000 * 3600 * 24),
+      );
       const base = nightDifference * pricePerNight;
       const taxes = base * 0.25;
       const total = base + taxes;
@@ -36,15 +38,16 @@ export default function BookVenue({ venue, bookings }) {
     calculateTotalPrice();
   }, [dateFrom, dateTo]);
 
-  const excludedDates = bookings?.reduce((acc, booking) => {
-    const interval = eachDayOfInterval({
-      start: parseISO(booking.dateFrom),
-      end: parseISO(booking.dateTo),
-    });
-    return acc.concat(interval);
-  }, []) || [];
+  const excludedDates =
+    bookings?.reduce((acc, booking) => {
+      const interval = eachDayOfInterval({
+        start: parseISO(booking.dateFrom),
+        end: parseISO(booking.dateTo),
+      });
+      return acc.concat(interval);
+    }, []) || [];
 
-  console.log('Excluded Dates:', excludedDates);
+  console.log("Excluded Dates:", excludedDates);
 
   const isBookedDate = (date) =>
     excludedDates.some((bookedDate) => isSameDay(bookedDate, date));
@@ -60,10 +63,10 @@ export default function BookVenue({ venue, bookings }) {
 
     createBooking(newBooking, {
       onSuccess: () => {
-        setSuccess(true); 
+        setSuccess(true);
         setTimeout(() => {
-          navigate("/profile"); 
-        }, 3000); 
+          navigate("/profile");
+        }, 3000);
       },
     });
   };

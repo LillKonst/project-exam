@@ -42,7 +42,10 @@ export default function UpdateVenueForm({
         city: formState.city,
         country: formState.country,
       },
-      media: images.map((img) => ({ url: img.url || img, alt: img.alt || "Uploaded image" })),
+      media: images.map((img) => ({
+        url: img.url || img,
+        alt: img.alt || "Uploaded image",
+      })),
       price: parseFloat(formState.price),
       maxGuests: guests,
       meta: {
@@ -58,12 +61,17 @@ export default function UpdateVenueForm({
 
   return (
     <div className="m-2 md:m-5 lg:m-10">
-      <form onSubmit={handleSubmit} className="flex flex-col justify-between w-full">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col justify-between w-full"
+      >
         <div className="flex flex-col md:flex-row">
           <div className="flex flex-col w-full max-w-[500px] mx-2">
             <h2 className="secondFont text-3xl mb-2">Venue Info: </h2>
             <div className="flex flex-col">
-              <label htmlFor="title" className="mx-2 my-1">Title</label>
+              <label htmlFor="title" className="mx-2 my-1">
+                Title
+              </label>
               <input
                 type="text"
                 name="title"
@@ -74,7 +82,9 @@ export default function UpdateVenueForm({
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="description" className="mx-2 my-1">Description</label>
+              <label htmlFor="description" className="mx-2 my-1">
+                Description
+              </label>
               <textarea
                 type="text"
                 name="description"
@@ -87,8 +97,10 @@ export default function UpdateVenueForm({
             </div>
 
             <div className="flex gap-2">
-            <div className="flex flex-col">
-                <label htmlFor="guests" className="mx-2 my-1">Max Guests</label>
+              <div className="flex flex-col">
+                <label htmlFor="guests" className="mx-2 my-1">
+                  Max Guests
+                </label>
                 <select
                   name="guests"
                   id="guests"
@@ -104,7 +116,9 @@ export default function UpdateVenueForm({
                 </select>
               </div>
               <div className="flex flex-col">
-                <label htmlFor="price" className="mx-2 my-1">Price per night</label>
+                <label htmlFor="price" className="mx-2 my-1">
+                  Price per night
+                </label>
                 <input
                   type="number"
                   name="price"
@@ -119,92 +133,132 @@ export default function UpdateVenueForm({
             <div className="m-2">
               <h3 className="secondFont text-3xl mb-2">This place offers:</h3>
               <div>
-                <input type="checkbox" name="wifi" id="wifi" checked={formState.wifi}
-                onChange={handleInputChange}className="mr-2" />
-                <label htmlFor="wifi" className="text-sm font-medium">WIFI</label>
+                <input
+                  type="checkbox"
+                  name="wifi"
+                  id="wifi"
+                  checked={formState.wifi}
+                  onChange={handleInputChange}
+                  className="mr-2"
+                />
+                <label htmlFor="wifi" className="text-sm font-medium">
+                  WIFI
+                </label>
               </div>
               <div>
-                <input type="checkbox" name="parking" id="parking" checked={formState.parking}
-                onChange={handleInputChange} className="mr-2" />
-                <label htmlFor="parking" className="text-sm font-medium">Parking</label>
+                <input
+                  type="checkbox"
+                  name="parking"
+                  id="parking"
+                  checked={formState.parking}
+                  onChange={handleInputChange}
+                  className="mr-2"
+                />
+                <label htmlFor="parking" className="text-sm font-medium">
+                  Parking
+                </label>
               </div>
               <div>
-                <input type="checkbox" name="breakfast" id="breakfast" checked={formState.breakfast}
-                onChange={handleInputChange}className="mr-2" />
-                <label htmlFor="breakfast" className="text-sm font-medium">Breakfast</label>
+                <input
+                  type="checkbox"
+                  name="breakfast"
+                  id="breakfast"
+                  checked={formState.breakfast}
+                  onChange={handleInputChange}
+                  className="mr-2"
+                />
+                <label htmlFor="breakfast" className="text-sm font-medium">
+                  Breakfast
+                </label>
               </div>
               <div>
-                <input type="checkbox" name="pets" id="pets" checked={formState.pets}
-                onChange={handleInputChange} className="mr-2" />
-                <label htmlFor="pets" className="text-sm font-medium">Pets allowed</label>
-              </div>             
+                <input
+                  type="checkbox"
+                  name="pets"
+                  id="pets"
+                  checked={formState.pets}
+                  onChange={handleInputChange}
+                  className="mr-2"
+                />
+                <label htmlFor="pets" className="text-sm font-medium">
+                  Pets allowed
+                </label>
+              </div>
             </div>
 
             <div>
               <h2 className="secondFont text-3xl mb-2">Location:</h2>
-            <div className="flex flex-col">
-              <label htmlFor="address" className="mx-2 my-1">Address</label>
-              <input
-                type="text"
-                name="address"
-                id="address"
-                value={formState.address}
-                onChange={handleInputChange}
-                className="mb-3 border rounded-lg p-2 w-full"
-              />
-            </div>
-            <div className="flex gap-2">
-            <div className="flex flex-col w-full">
-              <label htmlFor="city" className="mx-2 my-1">City</label>
-              <input
-                type="text"
-                name="city"
-                id="city"
-                value={formState.city}
-                onChange={handleInputChange}
-                className="mb-3 border rounded-lg p-2 w-full"
-              />
-            </div>
-            <div className="flex flex-col w-full">
-              <label htmlFor="zip" className="mx-2 my-1">Zip</label>
-              <input
-                type="number"
-                name="zip"
-                id="zip"
-                value={formState.zip}
-                onChange={handleInputChange}
-                className="mb-3 border rounded-lg p-2 w-full"
-              />
-            </div>
-            </div>
+              <div className="flex flex-col">
+                <label htmlFor="address" className="mx-2 my-1">
+                  Address
+                </label>
+                <input
+                  type="text"
+                  name="address"
+                  id="address"
+                  value={formState.address}
+                  onChange={handleInputChange}
+                  className="mb-3 border rounded-lg p-2 w-full"
+                />
+              </div>
+              <div className="flex gap-2">
+                <div className="flex flex-col w-full">
+                  <label htmlFor="city" className="mx-2 my-1">
+                    City
+                  </label>
+                  <input
+                    type="text"
+                    name="city"
+                    id="city"
+                    value={formState.city}
+                    onChange={handleInputChange}
+                    className="mb-3 border rounded-lg p-2 w-full"
+                  />
+                </div>
+                <div className="flex flex-col w-full">
+                  <label htmlFor="zip" className="mx-2 my-1">
+                    Zip
+                  </label>
+                  <input
+                    type="number"
+                    name="zip"
+                    id="zip"
+                    value={formState.zip}
+                    onChange={handleInputChange}
+                    className="mb-3 border rounded-lg p-2 w-full"
+                  />
+                </div>
+              </div>
 
-             <div className="flex gap-2 w-full">
-            <div className="flex flex-col w-full">
-              <label htmlFor="country" className="mx-2 my-1">Country</label>
-              <input
-                type="text"
-                name="country"
-                id="country"
-                value={formState.country}
-                onChange={handleInputChange}
-                className="mb-3 border rounded-lg p-2 w-full"
-              />
+              <div className="flex gap-2 w-full">
+                <div className="flex flex-col w-full">
+                  <label htmlFor="country" className="mx-2 my-1">
+                    Country
+                  </label>
+                  <input
+                    type="text"
+                    name="country"
+                    id="country"
+                    value={formState.country}
+                    onChange={handleInputChange}
+                    className="mb-3 border rounded-lg p-2 w-full"
+                  />
+                </div>
+                <div className="flex flex-col w-full">
+                  <label htmlFor="continent" className="mx-2 my-1">
+                    Continent
+                  </label>
+                  <input
+                    type="text"
+                    name="continent"
+                    id="continent"
+                    value={formState.continent}
+                    onChange={handleInputChange}
+                    className="mb-3 border rounded-lg p-2 w-full"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="flex flex-col w-full">
-              <label htmlFor="continent" className="mx-2 my-1">Continent</label>
-              <input
-                type="text"
-                name="continent"
-                id="continent"
-                value={formState.continent}
-                onChange={handleInputChange}
-                className="mb-3 border rounded-lg p-2 w-full"
-              />
-            </div>
-            </div>
-            </div>
-            
-          
           </div>
           <UpdateGallery
             images={images}
@@ -215,7 +269,10 @@ export default function UpdateVenueForm({
             setSelectedImageIndex={setSelectedImageIndex}
           />
         </div>
-        <button type="submit" className="bg-customRed shadow-sm text-customWhite px-4 w-fit py-2 rounded-lg font-medium mx-2 mb-5">
+        <button
+          type="submit"
+          className="bg-customRed shadow-sm text-customWhite px-4 w-fit py-2 rounded-lg font-medium mx-2 mb-5"
+        >
           {buttonText}
         </button>
       </form>
