@@ -27,7 +27,7 @@ export function useUpdateVenue() {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(updatedVenue),
-        }
+        },
       );
 
       if (!response.ok) {

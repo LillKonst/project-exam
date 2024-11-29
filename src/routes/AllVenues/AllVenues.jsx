@@ -27,12 +27,12 @@ export default function AllVenues() {
     <div className="flex flex-col items-center">
       <div className="flex w-full px-8">
         <h1 className="text-2xl font-semibold mt-5">YOUR NEXT HOLIDAZE</h1>
-        <FilterButton onFilterChange={onFilterChange}/>
+        <FilterButton onFilterChange={onFilterChange} />
       </div>
-        
+
       {/* <CalendarForm onSearchSubmit={onSearchSubmit} /> */}
-      
-      <ListOfVenues queryParams={queryParams}/>
+
+      <ListOfVenues queryParams={queryParams} />
     </div>
   );
 }

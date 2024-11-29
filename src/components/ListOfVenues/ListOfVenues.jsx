@@ -1,13 +1,20 @@
-import VenueLinkSm from "../cards/VenueLinkSm/VenueLinkSm"
+import VenueLinkSm from "../cards/VenueLinkSm/VenueLinkSm";
 import useQueryVenues from "../../hooks/useQueryVenues";
 import Searchbar from "../Layout/Header/Searchbar/Searchbar";
 import usePaginatedVenues from "../../hooks/usePaginatedVenues";
 
 export default function ListOfVenues() {
-  const { data: venues, isLoading, isError, page, setPage } = usePaginatedVenues();
+  const {
+    data: venues,
+    isLoading,
+    isError,
+    page,
+    setPage,
+  } = usePaginatedVenues();
 
   const handleNextPage = () => setPage((prevPage) => prevPage + 1);
-  const handlePreviousPage = () => setPage((prevPage) => Math.max(prevPage - 1, 1));
+  const handlePreviousPage = () =>
+    setPage((prevPage) => Math.max(prevPage - 1, 1));
 
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
@@ -16,20 +23,19 @@ export default function ListOfVenues() {
   if (isLoading && page === 1) {
     return <div>Loading venues...</div>;
   }
-    
-      if (isError) {
-        return <div>Error loading venues...</div>;
-      }
 
+  if (isError) {
+    return <div>Error loading venues...</div>;
+  }
 
-    return (
-        <div className="flex flex-col justify-center items-center mx-8">
-          <div className="flex items-center justify-start w-full px-5">
-              {/* <h1 className=" text-xl sm:text-2xl md:text-4xl">Your Next Holidaze</h1>
+  return (
+    <div className="flex flex-col justify-center items-center mx-8">
+      <div className="flex items-center justify-start w-full px-5">
+        {/* <h1 className=" text-xl sm:text-2xl md:text-4xl">Your Next Holidaze</h1>
               <Searchbar className="ms-auto"/> */}
-            </div>
-            <div className="grid grid-cols-12 gap-1 w-full mx-2">
-            {venues && venues.length > 0 ? (
+      </div>
+      <div className="grid grid-cols-12 gap-1 w-full mx-2">
+        {venues && venues.length > 0 ? (
           venues.map((venue) => <VenueLinkSm key={venue.id} venue={venue} />)
         ) : (
           <p>No venues available.</p>
@@ -46,9 +52,7 @@ export default function ListOfVenues() {
         </button>
 
         {/* Page Indicator */}
-        <span className="mx-4 text-lg font-medium">
-          Page {page}
-        </span>
+        <span className="mx-4 text-lg font-medium">Page {page}</span>
 
         {/* Next Button */}
         <button
@@ -59,15 +63,14 @@ export default function ListOfVenues() {
           Next
         </button>
       </div>
-        </div>
-    );
+    </div>
+  );
 }
 
 // import VenueLinkSm from "../cards/VenueLinkSm/VenueLinkSm";
 // import useQueryVenues from "../../hooks/useQueryVenues";
 // import FilterButton from "../Buttons/FilterButton";
 // import { useState } from "react";
-
 
 // export default function ListOfVenues({queryParams}) {
 //   const { data: venues, isLoading, isError } = useQueryVenues(queryParams);
@@ -80,9 +83,8 @@ export default function ListOfVenues() {
 //     return <div>Error loading venues...</div>;
 //   }
 
-
 //   const filteredVenues = venues.filter((venue) => {
-//     const meta = venue.meta || {}; 
+//     const meta = venue.meta || {};
 //     return (
 //       (!filters.wifi || meta.wifi) &&
 //       (!filters.breakfast || meta.breakfast) &&
@@ -91,8 +93,6 @@ export default function ListOfVenues() {
 //     );
 //   });
 
-
-  
 //   return (
 //     <div className="flex flex-col justify-center items-center">
 //       <div className="w-10/12 p-6 flex flex-col justify-center items-center">
@@ -102,8 +102,7 @@ export default function ListOfVenues() {
 //             <FilterButton onFilterChange={handleFilterChange}/>
 //           </div>
 //       </div>
-      
-      
+
 //       <div className="grid grid-cols-12 gap-1 w-full mx-2">
 //       {filteredVenues && filteredVenues.length > 0 ? (
 //             filteredVenues.map((venue) => (

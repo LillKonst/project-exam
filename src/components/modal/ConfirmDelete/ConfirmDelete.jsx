@@ -1,12 +1,19 @@
 import React from "react";
 
-export default function ConfirmDelete({ isOpen, onConfirm, onCancel, isLoading }) {
+export default function ConfirmDelete({
+  isOpen,
+  onConfirm,
+  onCancel,
+  isLoading,
+}) {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-md mx-4">
-        <h3 className="text-xl font-semibold mb-4">Are you sure you want to delete this venue?</h3>
+        <h3 className="text-xl font-semibold mb-4">
+          Are you sure you want to delete this venue?
+        </h3>
         <p className="text-gray-600 mb-6">This action cannot be undone.</p>
         <div className="flex justify-between">
           <button

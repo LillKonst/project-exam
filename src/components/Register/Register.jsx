@@ -21,7 +21,10 @@ export default function Register({ onClose, onRegisterSuccess }) {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
-    console.log(`Updated field ${name}:`, type === "checkbox" ? checked : value);
+    console.log(
+      `Updated field ${name}:`,
+      type === "checkbox" ? checked : value,
+    );
   };
 
   // Handle form submission
@@ -51,20 +54,20 @@ export default function Register({ onClose, onRegisterSuccess }) {
             {
               onSuccess: (loginData) => {
                 console.log("Login successful. Data:", loginData);
-                contextLogin(loginData); 
+                contextLogin(loginData);
                 localStorage.setItem("user", JSON.stringify(loginData));
                 onRegisterSuccess?.();
               },
               onError: (loginError) => {
                 console.error("Login error after registration:", loginError);
               },
-            }
+            },
           );
         },
         onError: (registerError) => {
           console.error("Registration error:", registerError);
         },
-      }
+      },
     );
   };
 
@@ -78,14 +81,21 @@ export default function Register({ onClose, onRegisterSuccess }) {
       </h2>
 
       <button
-                type="button"
-                onClick={onClose}
-                className="absolute top-0 right-0 p-2 text-gray-700 rounded-lg font-semibold focus:outline-none"
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-</svg>
-            </button>
+        type="button"
+        onClick={onClose}
+        className="absolute top-0 right-0 p-2 text-gray-700 rounded-lg font-semibold focus:outline-none"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          class="bi bi-x"
+          viewBox="0 0 16 16"
+        >
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+        </svg>
+      </button>
 
       <div>
         <label htmlFor="name" className="block text-gray-700">

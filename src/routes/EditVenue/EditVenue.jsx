@@ -7,14 +7,13 @@
 // export default function EditVenue() {
 //   const { data: venue, isLoading, isError } = useFetchVenue();
 //   const { id } = useParams();
-//   const [newVenueData, setNewVenueData] = useState(null); 
-//   const [initialData, setInitialData] = useState(null); 
+//   const [newVenueData, setNewVenueData] = useState(null);
+//   const [initialData, setInitialData] = useState(null);
 //   const [images, setImages] = useState([]);
-//   const [currentImage, setCurrentImage] = useState(""); 
+//   const [currentImage, setCurrentImage] = useState("");
 //   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 //   const [loading, setLoading] = useState(false);
 //   const [error, setError] = useState(null);
-
 
 //   // Populate form data
 //   useEffect(() => {
@@ -46,7 +45,7 @@
 
 //   const handleChange = (e) => {
 //     const { name, value, type, checked } = e.target;
-  
+
 //     setNewVenueData((prevData) => {
 //       // Check if the field being updated belongs to `meta`
 //       if (["wifi", "parking", "breakfast", "pets"].includes(name)) {
@@ -58,7 +57,7 @@
 //           },
 //         };
 //       }
-  
+
 //       // Update other fields outside `meta`
 //       return {
 //         ...prevData,
@@ -66,17 +65,14 @@
 //       };
 //     });
 //   };
-  
-  
-  
 
 //   const { updateVenue } = useUpdateVenue();  // Assuming this returns a function to trigger the update
 
 //   const handleSubmit = async (e) => {
 //     e.preventDefault(); // Prevent default form submission behavior
-  
+
 //     const updatedFields = {};
-  
+
 //     // Compare form state with initial state to prepare the payload
 //     if (JSON.stringify(newVenueData) !== JSON.stringify(initialData)) {
 //       Object.keys(newVenueData).forEach((key) => {
@@ -85,7 +81,7 @@
 //         }
 //       });
 //     }
-  
+
 //     // Handle meta (checkboxes like wifi, parking)
 //     if (
 //       newVenueData.meta &&
@@ -103,26 +99,23 @@
 //       setError("Name is required.");
 //       return;
 //     }
-    
+
 //     if (newVenueData.price <= 0) {
 //       setError("Price must be greater than 0.");
 //       return;
 //     }
-    
+
 //     if (newVenueData.maxGuests <= 0) {
 //       setError("Max guests must be greater than 0.");
 //       return;
 //     }
-    
-    
-    
-  
+
 //     // Validate if there are changes to send
 //     if (Object.keys(updatedFields).length === 0) {
 //       setError("No changes detected.");
 //       return;
 //     }
-  
+
 //     try {
 //       console.log("Submitting updated fields:", updatedFields);
 //       const response = await updateVenue(venue.id, updatedFields);
@@ -133,8 +126,6 @@
 //       setError("An error occurred. Please try again.");
 //     }
 //   };
-  
-  
 
 //   if (isLoading) return <p>Loading...</p>;
 //   if (isError || !newVenueData) return <p>Error loading venue data.</p>;
@@ -274,7 +265,7 @@
 //               </div>
 //             </div>
 //           </div>
-//           <UploadGallery 
+//           <UploadGallery
 //           images={images}
 //           setImages={setImages}
 //           currentImage={currentImage}
@@ -292,13 +283,11 @@
 //   );
 // }
 
-
 // import VenueForm from "../../components/forms/VenueForm/VenueForm";
 // import { useUpdateVenue } from "../../hooks/useUpdateVenue";
 // import { useParams } from "react-router-dom";
 // import { useState, useEffect } from "react";
 // import useFetchVenue from "../../hooks/useFetchVenue";
-
 
 // export default function EditVenue() {
 //   const { id } = useParams();
@@ -356,7 +345,6 @@
 //       }));
 //     }
 
-
 //     try {
 //       // Send only the fields that have changed to the API
 //       const updatedVenue = await updateVenue(venue.id, updatedFields);
@@ -365,7 +353,6 @@
 //       console.error("Failed to update venue:", error.message);
 //     }
 //   };
-
 
 //   return (
 //     <div className="m-10 px-10">
@@ -378,9 +365,6 @@
 //     </div>
 //   );
 // }
-
-
-
 
 // import { useUpdateVenue } from "../../hooks/useUpdateVenue";
 // import { useParams } from "react-router-dom";
@@ -430,7 +414,6 @@
 //     );
 //   });
 
-
 //     if (imagesHaveChanged) {
 //       formData.media = updatedData.images.map(image => ({
 //         url: image.url || image,  // Ensure the image URL is structured correctly
@@ -478,7 +461,7 @@ export default function EditVenue() {
   useEffect(() => {
     if (venue) {
       // Normalize the venue media to match the API's format
-      const normalizedMedia = venue.media.map(item => ({
+      const normalizedMedia = venue.media.map((item) => ({
         url: item.url || item, // Ensure each image is structured correctly
         alt: item.alt || "image", // Default alt text if not provided
       }));
@@ -491,19 +474,28 @@ export default function EditVenue() {
 
     // Check if any fields have changed and only send those
     if (updatedData.name !== venue.name) formData.name = updatedData.name;
-    if (updatedData.description !== venue.description) formData.description = updatedData.description;
-    if (updatedData.address !== venue.location?.address) formData.address = updatedData.address;
-    if (updatedData.city !== venue.location?.city) formData.city = updatedData.city;
-    if (updatedData.country !== venue.location?.country) formData.country = updatedData.country;
+    if (updatedData.description !== venue.description)
+      formData.description = updatedData.description;
+    if (updatedData.address !== venue.location?.address)
+      formData.address = updatedData.address;
+    if (updatedData.city !== venue.location?.city)
+      formData.city = updatedData.city;
+    if (updatedData.country !== venue.location?.country)
+      formData.country = updatedData.country;
     if (updatedData.price !== venue.price) formData.price = updatedData.price;
-    if (updatedData.guests !== venue.maxGuests) formData.maxGuests = updatedData.guests;
+    if (updatedData.guests !== venue.maxGuests)
+      formData.maxGuests = updatedData.guests;
     if (updatedData.wifi !== venue.meta?.wifi) formData.wifi = updatedData.wifi;
-    if (updatedData.parking !== venue.meta?.parking) formData.parking = updatedData.parking;
-    if (updatedData.breakfast !== venue.meta?.breakfast) formData.breakfast = updatedData.breakfast;
+    if (updatedData.parking !== venue.meta?.parking)
+      formData.parking = updatedData.parking;
+    if (updatedData.breakfast !== venue.meta?.breakfast)
+      formData.breakfast = updatedData.breakfast;
     if (updatedData.pets !== venue.meta?.pets) formData.pets = updatedData.pets;
 
     // Check if the media/images have changed
-    const imagesHaveChanged = Array.isArray(updatedData.images) && Array.isArray(venue.media) &&
+    const imagesHaveChanged =
+      Array.isArray(updatedData.images) &&
+      Array.isArray(venue.media) &&
       updatedData.images.some((image, index) => {
         return (
           image.url !== venue.media[index]?.url ||
@@ -512,9 +504,9 @@ export default function EditVenue() {
       });
 
     if (imagesHaveChanged) {
-      formData.media = updatedData.images.map(image => ({
-        url: image.url || image,  // Ensure the image URL is structured correctly
-        alt: image.alt || "image" // Provide alt text if missing
+      formData.media = updatedData.images.map((image) => ({
+        url: image.url || image, // Ensure the image URL is structured correctly
+        alt: image.alt || "image", // Provide alt text if missing
       }));
     }
 

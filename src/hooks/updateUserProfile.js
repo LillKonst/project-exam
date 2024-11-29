@@ -22,7 +22,7 @@ export async function updateUserProfileAPI(newUserData, accessToken, user) {
           Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify(payload),
-      }
+      },
     );
 
     if (!response.ok) {
