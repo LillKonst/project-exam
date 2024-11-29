@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "AlbertSans";
+  src: url("../public/fonts/Albert_Sans/AlbertSans-VariableFont_wght.ttf")
+    format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LongCang";
+  src: url("../public/fonts/Long_Cang/LongCang-Regular.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+div {
+  font-family: "AlbertSans";
+}
+
+.secondFont {
+  font-family: "LongCang";
+}
+
+html,
+body {
+  /* background-color: #E2F1F3; */
+  background-color: #FBFAFE;
+  width: 100%;
+  margin: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black background */
+  z-index: 1000; /* Makes sure the overlay is above other content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Content inside the overlay */
+.overlay-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+}
+
+/* Close button for the overlay */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.booked-date {
+  pointer-events: none; /* Prevent interaction */
+  border-radius: 50%; /* Match the calendar's default day styling */
+  color: red;
+}
