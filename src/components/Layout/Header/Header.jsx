@@ -39,7 +39,7 @@ function Header() {
         <div
           className={`${
             isMenuOpen ? "flex" : "hidden lg:flex"
-          } absolute lg:static top-[77px] left-50 right-0 h-screen p-5 lg:p-0 
+          } absolute lg:static top-[77px] left-50 right-0 h-screen lg:h-[70px] p-5 lg:p-0 
                        rounded lg:ms-5
                      bg-customWhite lg:bg-transparent lg:w-full
                       border-b-4 border-customYellow lg:border-none lg:space-x-4 `}
