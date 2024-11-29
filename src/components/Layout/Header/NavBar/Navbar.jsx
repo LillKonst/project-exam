@@ -2,7 +2,6 @@
 import { useState  } from "react";
 import { Link, useLocation } from "react-router-dom"; 
 import PropTypes from "prop-types";
-import UserIcon from "../UserIcon/UserIcon";
 
 export function Home() {
     return <div>Home</div>
@@ -32,34 +31,19 @@ export default function Navbar({ className }) {
     };
 
     return (
-    <nav>
-         <div className="block md:hidden">
-                <button onClick={toggleMenu} className="text-md p-2 bg-customBlue border-none text-bold">
-                    MENU
-                </button>
-            </div>
-        <ul className={`${
-                    isMenuOpen ? "flex" : "hidden"
-                } flex-col items-end md:flex md:flex-row md:space-x-4 
-                    absolute md:relative top-[70px] right-0 mx-5 rounded md:top-[0px]
-                    md:left-auto md:right-auto 
-                    bg-customBlue md:bg-transparent md:w-auto 
-                     md:items-center md:justify-between`}>
+    <nav className={`flex ${className}`}>
+        <ul className="flex flex-col gap-2 lg:flex-row">
             <li className="px-2">
                 <Link to="" onClick={() => setIsMenuOpen(false)}  className={`text-lg text-customBlack ${
                             location.pathname === "/" ? "font-semibold" : ""
                         }`}>HOME</Link>
             </li>
-            <li className="text-lg text-customBlack font-semibold">|</li>
+            <li className="text-lg text-customBlack font-semibold hidden lg:block">|</li>
             <li className="px-2">
                 <Link to="/AllVenues" onClick={() => setIsMenuOpen(false)}  className={`text-lg text-customBlack ${
                             location.pathname === "/AllVenues" ? "font-semibold" : ""
                         }`}>EXPLORE VENUES</Link>
             </li>
-            <li>
-              <UserIcon />
-            </li>
-            
         </ul>
     </nav>
     );

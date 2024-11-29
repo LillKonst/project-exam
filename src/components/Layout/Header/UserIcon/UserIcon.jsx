@@ -31,40 +31,45 @@ export default function UserIcon() {
     };
 
     return (
-    <nav className="flex flex-col items-end relative ms-auto">
+    <nav className="flex flex-col lg:items-end mt-5 lg:mt-0 relative lg:ml-auto">
         <div onClick={toggleMenu} className="flex items-center px-2 py-2">
                  {user ? (
-              <div className="flex gap-1 justify-center items-center">
+              <div className="flex gap-1 justify-center items-center lg:mt-4">
                 <img
                     src={user.avatar?.url || "https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_1280.png"}
                     alt="User Avatar"
-                    className="w-[20px] h-[20px] rounded-full object-cover"
+                    className="w-[30px] h-[30px] rounded-full object-cover"
                 />
 
-                <p className="text-lg">{user.name}</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" className="bi bi-caret-down-fill text-gray-600" viewBox="0 0 16 16">
+                <p className="text-xl">{user.name}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" className="bi bi-caret-down-fill text-gray-600 hidden lg:block" viewBox="0 0 16 16">
                   <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                   </svg>
                 
               </div>
             ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-person-circle text-customBlack" viewBox="0 0 16 16">
+              <div className="hidden lg:flex gap-2 items-center border border-customBlack p-2 rounded-full mt-2 ms-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-person-circle text-customBlack hidden lg:block" viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                     <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                 </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" className="bi bi-caret-down-fill text-gray-600 hidden lg:block" viewBox="0 0 16 16">
+                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                  </svg>
+                </div>
             )}
         </div>
         <ul className={`${
-            isMenuOpen ? "flex" : "hidden"
-            } absolute top-12 right-1 flex flex-col shadow-md bg-customWhite rounded-xl`}>
+            isMenuOpen ? "lg:flex" : "lg:hidden"
+            } flex flex-col lg:absolute lg:top-12 lg:mt-3 lg:right-1 lg:shadow-md lg:bg-customWhite md:rounded-xl`}>
             {!user ? ( 
-                    <div className="p-3">
-                        <li className="px-3 py-2 hover:font-semibold">
+                    <div className="lg:p-3">
+                        <li className="text-lg lg:text-md px-3 py-2 hover:font-semibold">
                             <button onClick={() => { setIsRegisterOpen(true); setIsMenuOpen(false); }} className="text-md">
                                 REGISTER
                             </button>
                         </li>
-                        <li className="px-3 py-2 hover:font-semibold">
+                        <li className="text-lg lg:text-md px-3 py-2 hover:font-semibold">
                             <button onClick={() => { setIsLoginOpen(true); setIsMenuOpen(false); }} className="text-md">
                                 LOGIN
                             </button>
