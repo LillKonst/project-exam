@@ -1,10 +1,8 @@
-
 import logo from "../../../images/holidaze-logo.svg";
 import Navbar from "../Header/NavBar/Navbar";
 import Searchbar from "../Header/Searchbar/Searchbar";
 import UserIcon from "./UserIcon/UserIcon";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
 export function Home() {
@@ -38,16 +36,14 @@ function Header() {
             </div>
 
             <div className={`${
-                    isMenuOpen ? "flex" : "hidden"
+                    isMenuOpen ? "flex" : "hidden lg:flex"
                 } absolute lg:static top-[77px] left-50 right-0 h-screen p-5 lg:p-0 
                        rounded lg:ms-5
                      bg-customWhite lg:bg-transparent lg:w-full
                       border-b-4 border-customYellow lg:border-none lg:space-x-4 `}>
                       <div className="flex flex-col items-start lg:flex-row lg:items-center w-full">
           <Navbar className="lg:mt-5"/>
-          
           <UserIcon />
-      
         <Searchbar className="w-full lg:mt-4"/> 
       </div></div></div>
       <div className="h-[15px] bg-customYellow w-full text-center text-customRed -mt-2">.</div>
