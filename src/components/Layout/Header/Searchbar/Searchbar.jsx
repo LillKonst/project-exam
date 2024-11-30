@@ -38,7 +38,7 @@ export default function Searchbar({ className }) {
     );
   });
 
-  const handleProductClick = (venueId) => {
+  const handleVenueClick = (venueId) => {
     setQuery("");
     navigate(`/venues/${venueId}`);
   };
@@ -79,7 +79,7 @@ export default function Searchbar({ className }) {
             {filteredResults.map((venue, index) => (
               <li
                 key={index}
-                onClick={() => handleProductClick(venue.id)}
+                onClick={() => handleVenueClick(venue.id)}
                 className="flex items-center p-2 hover:bg-gray-200 cursor-pointer border-b"
               >
                 <img

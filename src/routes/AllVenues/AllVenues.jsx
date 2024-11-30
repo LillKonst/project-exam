@@ -2,6 +2,7 @@ import { useState } from "react";
 import CalendarForm from "../../components/calendarForm/CalendarForm";
 import ListOfVenues from "../../components/ListOfVenues/ListOfVenues";
 import FilterButton from "../../components/Buttons/FilterButton";
+import ExploreVenuesList from "../../components/ExploreVenues/ExploreVenuesList";
 
 export default function AllVenues() {
   const [queryParams, setQueryParams] = useState({});
@@ -25,14 +26,14 @@ export default function AllVenues() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex w-full px-8">
+      {/* <div className="flex w-full px-8">
         <h1 className="text-2xl font-semibold mt-5">YOUR NEXT HOLIDAZE</h1>
         <FilterButton onFilterChange={onFilterChange} />
-      </div>
+      </div> */}
 
       {/* <CalendarForm onSearchSubmit={onSearchSubmit} /> */}
 
-      <ListOfVenues queryParams={queryParams} />
+      <ExploreVenuesList />
     </div>
   );
 }
