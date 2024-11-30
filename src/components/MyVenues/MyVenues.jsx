@@ -3,12 +3,27 @@ import useMyVenues from "../../hooks/useMyVenues";
 import RegisterVenue from "../../routes/RegisterVenue/RegisterVenue";
 import MyVenueCard from "../cards/MyVenueCard/MyVenueCard";
 import { Link } from "react-router-dom";
+import ShowBooking from "../cards/ShowBooking/ShowBooking";
+import { useState } from "react";
 
 export default function MyVenues() {
   const { user } = useAuth();
   const { venues, loading, error } = useMyVenues(user);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedBookings, setSelectedBookings] = useState(null);
+
   const venueCount = venues.length;
+
+  const openModal = (bookings) => {
+    setSelectedBookings(bookings);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedBookings(null);
+  };
 
   const refreshList = async () => {
     const fetchedVenues = await fetchVenues();
@@ -24,30 +39,33 @@ export default function MyVenues() {
   }
   return (
     <div className="flex flex-col m-5">
-      <div className="flex flex-col">
-        <div className="flex">
-          <h2 className="text-2xl font-semibold">MY VENUES ({venueCount})</h2>
-          <Link to="/RegisterVenue" className="ms-auto font-semibold">
-            REGISTER VENUE
-          </Link>
-        </div>
-        <div>
-          {venues.length > 0 ? (
-            <div className="flex flex-wrap">
-              {venues.map((venue) => (
-                <MyVenueCard
-                  key={venue.id}
-                  venue={venue}
-                  bookings={venue.bookings}
-                  refreshList={refreshList}
-                />
-              ))}
-            </div>
-          ) : (
-            <p className="text-md">No Venues</p>
-          )}
-        </div>
+      <div className="flex w-full">
+        <h2 className="text-2xl font-semibold">MY VENUES ({venueCount})</h2>{" "}
       </div>
+      <div>
+        {venues.length > 0 ? (
+          <div className="flex flex-wrap justify-center items-center md:justify-start gap-2">
+            {venues.map((venue) => (
+              <MyVenueCard
+                key={venue.id}
+                venue={venue}
+                bookings={venue.bookings}
+                refreshList={refreshList}
+                openModal={openModal}
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="text-md">No Venues</p>
+        )}
+      </div>
+      {isModalOpen && (
+        <div className="overlay">
+          <div className="overlay-content">
+            <ShowBooking bookings={selectedBookings} onClose={closeModal} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

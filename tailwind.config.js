@@ -15,6 +15,10 @@ export default {
         customRed: "#F04242",
         hoverRed: "#ED1D1D",
       },
+      screens: {
+        xxs: "400px",
+        xs: "500px",
+      },
     },
   },
   plugins: [],

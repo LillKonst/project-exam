@@ -11,12 +11,12 @@ export default function MyBookings() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="flex flex-col m-5 w-3/4">
-      <h2 className="text-2xl font-semibold">
+    <div className="flex flex-col m-1 lg:m-5 w-full lg:w-3/4">
+      <h2 className="text-lg justify-self-start md:text-2xl font-semibold">
         MY UPCOMING HOLIDAZE ({bookings.length})
       </h2>
       {bookings.length > 0 ? (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-center items-center md:justify-start gap-2">
           {bookings.map((booking) => (
             <BookingCard
               key={booking.id}
