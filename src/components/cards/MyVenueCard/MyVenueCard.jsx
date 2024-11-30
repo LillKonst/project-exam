@@ -4,7 +4,12 @@ import ConfirmDelete from "../../modal/ConfirmDelete/ConfirmDelete";
 import { useDeleteVenue } from "../../../hooks/useDeleteVenue";
 import { useState } from "react";
 
-export default function MyVenueCard({ venue, bookings, refreshList }) {
+export default function MyVenueCard({
+  venue,
+  bookings,
+  refreshList,
+  openModal,
+}) {
   const [showModal, setShowModal] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -28,46 +33,51 @@ export default function MyVenueCard({ venue, bookings, refreshList }) {
   };
 
   const handleCancelDelete = () => {
-    setShowModal(false); // Close the modal without doing anything
+    setShowModal(false);
   };
   return (
-    <div className="flex gap-2 transition duration-300 ease-in-out group m-2 shadow-sm rounded w-auto">
+    <div className="flex flex-col lg:flex-row gap-2 m-1 lg:m-2 rounded w-auto">
       <Link
         to={`/VenueSpecific/${venue.id}`}
-        className="relative w-auto max-h-44 aspect-[4/2]"
+        className="flex flex-col lg:flex-row transition duration-300 ease-in-out group"
       >
-        <img
-          src={venue.media[0]?.url}
-          alt={venue.media[0]?.alt || "Product image"}
-          className="object-cover w-full h-full rounded"
-        />
-        <span className="absolute inset-0 flex items-center justify-center rounded text-xl text-white bg-gray-600 bg-opacity-50 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
-          CLICK IMG TO VIEW VENUE
-        </span>
+        <div className="relative w-auto max-h-44 aspect-[4/2]">
+          <img
+            src={venue.media[0]?.url}
+            alt={venue.media[0]?.alt || "Product image"}
+            className="object-cover w-full h-full rounded"
+          />
+          <span className="absolute inset-0 flex items-center justify-center rounded text-xl text-white bg-gray-600 bg-opacity-50 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
+            VIEW VENUE
+          </span>
+        </div>
+        <div className="flex flex-col p-2">
+          <div>
+            <h2 className="text-xl font-semibold">{venue.name}</h2>
+            <h3 className="">
+              {venue.location?.city || venue.location?.country
+                ? `${venue.location?.city?.slice(0, 15) || ""}${venue.location?.city && venue.location?.country ? ", " : ""}${venue.location?.country?.slice(0, 15) || ""}`
+                : "Location not available"}
+            </h3>
+          </div>
+
+          <p className="text-md mb-3">Capasity: {venue.maxGuests} guests</p>
+
+          <div className="flex">
+            <p className="text-xl font-semibold me-1">${venue.price}</p>
+            <p className="text-xl text-gray-600">night</p>
+          </div>
+
+          <p className="text-lg flex gap-2 items-center mt-auto">
+            This venue has been booked {bookings.length} times
+          </p>
+        </div>
       </Link>
-      <div className="flex flex-col p-2">
-        <div>
-          <h2 className="text-xl font-semibold">{venue.name}</h2>
-          <h3 className="">
-            {venue.location?.city || venue.location?.country
-              ? `${venue.location?.city?.slice(0, 15) || ""}${venue.location?.city && venue.location?.country ? ", " : ""}${venue.location?.country?.slice(0, 15) || ""}`
-              : "Location not available"}
-          </h3>
-        </div>
-
-        <p className="text-md mb-3">Capasity: {venue.maxGuests} guests</p>
-
-        <div className="flex">
-          <p className="text-xl font-semibold me-1">${venue.price}</p>
-          <p className="text-xl text-gray-600">night</p>
-        </div>
-
-        <p className="text-lg flex gap-2 items-center mt-auto">
-          This venue has been booked {bookings.length} times
-        </p>
-      </div>
-      <div className="flex flex-col gap-2 justify-center ms-5">
-        <button className="font-semibold text-sm hover:bg-hoverRed text-customWhite bg-customRed ms-12 px-3 py-2 rounded flex items-center gap-2">
+      <div className="flex flex-col gap-2 justify-center w-full lg:w-fit lg:ms-5">
+        <button
+          onClick={() => openModal(bookings)}
+          className="font-semibold text-sm hover:bg-hoverRed text-customWhite bg-customRed lg:ms-12 px-3 py-2 rounded flex items-center gap-2 shadow-md"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -83,7 +93,7 @@ export default function MyVenueCard({ venue, bookings, refreshList }) {
         </button>
         <Link
           to={`/EditVenue/${venue.id}`}
-          className="font-semibold text-sm hover:bg-hoverRed text-customWhite bg-customRed ms-12 px-3 py-2 rounded flex items-center gap-2"
+          className="font-semibold text-sm hover:bg-hoverRed text-customWhite bg-customRed lg:ms-12 px-3 py-2 rounded flex items-center gap-2 shadow-md"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +109,7 @@ export default function MyVenueCard({ venue, bookings, refreshList }) {
         </Link>
         <button
           onClick={handleDeleteClick}
-          className="font-semibold text-sm hover:bg-hoverRed text-customWhite bg-customRed ms-12 px-3 py-2 rounded flex items-center gap-2"
+          className="font-semibold text-sm hover:bg-hoverRed text-customWhite bg-customRed lg:ms-12 px-3 py-2 rounded flex items-center gap-2 shadow-md"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
