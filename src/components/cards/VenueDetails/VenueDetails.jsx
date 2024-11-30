@@ -27,7 +27,7 @@ export default function VenueDetails({ venue }) {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative w-full h-[70vh]">
+      <div className="relative w-full h-[50vh] lg:h-[70vh]">
         <img
           src={venue.media[0]?.url || venueDefaultImg}
           alt={venue.media[0]?.alt || "Product image"}
@@ -36,7 +36,7 @@ export default function VenueDetails({ venue }) {
         <button
           type="button"
           onClick={openGallery}
-          className="bg-customYellow font-medium text-lg p-3 absolute top-5 right-5 m-1 rounded-md flex items-center"
+          className="bg-customYellow font-medium text-md sm:text-lg p-2 sm:p-3 absolute top-5 right-5 m-1 rounded-md flex items-center"
         >
           GALLERY
           <svg
@@ -63,25 +63,29 @@ export default function VenueDetails({ venue }) {
         />
       )}
 
-      <div className="flex flex-col -mt-12 mx-12 w-10/12 z-10 p-2 md:p-5 bg-white shadow-md rounded-md ">
-        <div className="flex flex-col md:flex-row m-3 md:m-8 md:mb-5 pb-5 border-b border-customYellow">
-          <div className="flex flex-col">
-            <div className="flex flex-row flex-wrap">
-              <h2 className="text-4xl ms-1">{venue.name}</h2>
+      <div className="flex flex-col -mt-12 md:mx-12 w-11/12 md:w-10/12 z-10 p-2 md:p-5 bg-customWhite shadow-md rounded-md ">
+        <div className="flex flex-col md:flex-row m-2 md:m-8 md:mb-5 pb-5 border-b border-customYellow">
+          <div className="flex flex-col relative">
+            <div className="flex flex-row flex-wrap items-center">
+              <h2 className="text-2xl md:text-4xl ms-1 font-semibold">
+                {venue.name}
+              </h2>
 
-              <div className="flex m-2">
-                {[...Array(venue.rating)].map((_, i) => (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    className="bi bi-star-fill text-customYellow ms-2"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
-                ))}
+              <div className="absolute top-0 right-0 m-2 xs:static">
+                <div className="flex flex-col gap-2 xs:flex-row">
+                  {[...Array(venue.rating)].map((_, i) => (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="currentColor"
+                      className="bi bi-star-fill text-customYellow ms-2 h-5 w-5 sm:w-6 sm-h-6 "
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                    </svg>
+                  ))}
+                </div>
               </div>
             </div>
             <h3 className="text-lg ms-2 text-gray-600">
@@ -91,10 +95,14 @@ export default function VenueDetails({ venue }) {
             </h3>
           </div>
 
-          <div className="flex flex-col items-start md:items-center md:ms-auto m-2">
+          <div className="flex flex-col mt-6 xs:mt-1 items-start md:items-center md:ms-auto m-2">
             <div className="flex">
-              <p className="text-3xl me-1">${venue.price}</p>
-              <p className="text-3xl text-gray-600">night</p>
+              <p className="text-xl sm:text-2xl md:text-3xl me-1">
+                ${venue.price}
+              </p>
+              <p className="text-xl sm:text-2xl md:text-3xl text-gray-600">
+                night
+              </p>
             </div>
             <p className="text-md m-1 ">Max Guests: {venue.maxGuests}</p>
           </div>
@@ -103,7 +111,7 @@ export default function VenueDetails({ venue }) {
         <div className="flex flex-col lg:flex-row">
           <div className="w-full">
             {venue.meta && Object.values(venue.meta).some((value) => value) && (
-              <div className="bg-white my-2 ms-6 py-3 rounded w-fit px-4">
+              <div className="my-2 ms-2 sm:ms-6 py-3 rounded w-fit xs:px-4">
                 <h3 className="text-4xl secondFont">This place offers:</h3>
                 {venue.meta.wifi && (
                   <p className="text-md flex m-1 ms-3">
@@ -168,24 +176,34 @@ export default function VenueDetails({ venue }) {
               </div>
             )}
 
-            <div className="my-2 mx-6 py-3 rounded w-fit px-4">
+            <div className="my-2 ms-2 sm:mx-6 py-3 rounded w-fit xs:px-4">
               <p className="text-xl">{venue.description}</p>
             </div>
 
-            <div className="my-2 mx-6 py-3 px-4">
+            <div className="my-2 ms-2 sm:mx-6 py-3 xs:px-4">
               <h3 className="text-4xl secondFont">Location:</h3>
-              <div>Adress: {venue.location.address}</div>
-              <div>Zip: {venue.location.zip}</div>
-              <div>City: {venue.location.city}</div>
-              <div>Country: {venue.location.country}</div>
-              <div>Continent: {venue.location.continent}</div>
+              <p className="text-lg">
+                Adress: {venue.location?.address || "Not Available"}
+              </p>
+              <p className="text-lg">
+                Zip: {venue.location?.zip || "Not Available"}
+              </p>
+              <p className="text-lg">
+                City: {venue.location?.city || "Not Available"}
+              </p>
+              <p className="text-lg">
+                Country: {venue.location?.country || "Not Available"}
+              </p>
+              <p className="text-lg">
+                Continent: {venue.location?.continent || "Not Available"}
+              </p>
             </div>
 
-            <p className="m-2 mx-6 px-3 text-xl text-gray-600">
+            <p className="m-2 ms-2 sm:mx-6 xs:px-3 text-xl text-gray-600">
               Created: {formatDate(venue.created)}
             </p>
           </div>
-          <div className="flex flex-col md:flex-row lg:flex-col">
+          <div className="flex flex-col w-fit">
             <BookVenue venue={venue} bookings={venue.bookings} />
             <OwnerCard venue={venue} />
           </div>

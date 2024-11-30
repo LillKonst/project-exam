@@ -14,8 +14,8 @@ export default function BookVenue({ venue, bookings }) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [taxesAndFees, setTaxesAndFees] = useState(0);
   const [basePrice, setBasePrice] = useState(0);
-  const [success, setSuccess] = useState(false); // Success message state
-  const navigate = useNavigate(); // For redirection
+  const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
   const maxGuests = venue?.maxGuests || 10;
 
   const calculateTotalPrice = () => {
@@ -71,11 +71,11 @@ export default function BookVenue({ venue, bookings }) {
     });
   };
   return (
-    <div className="flex flex-col items-center bg-customBlue h-fit p-6 rounded-2xl m-3 shadow-lg">
-      <form onSubmit={handleSubmit} className="flex flex-col mx-5 my-2">
-        <div className="flex self-start my-2">
-          <h2 className="text-2xl">{venue.price}</h2>
-          <h2 className="ms-2 text-gray-600 text-2xl">night</h2>
+    <div className="flex flex-col items-center bg-customWhite h-fit w-fit p-2 sm:p-6 rounded-2xl sm:m-3 border border-gray-200">
+      <form onSubmit={handleSubmit} className="flex flex-col sm:mx-5 my-2">
+        <div className="flex self-start m-3 my-2">
+          <h2 className="text-xl sm:text-2xl">{venue.price}</h2>
+          <h2 className="ms-2 text-gray-600 text-xl sm:text-2xl">night</h2>
         </div>
 
         <div className="flex justify-center items-center">
@@ -88,7 +88,7 @@ export default function BookVenue({ venue, bookings }) {
             minDate={new Date()}
             excludeDates={excludedDates}
             placeholderText="CHECK-IN"
-            className="datepicker-input text-center me-1 hover:border hover:border-[#a0aec0] focus:outline-none cursor-pointer rounded bg-white p-2 w-32"
+            className="datepicker-input text-center me-1 border border-gray-300 hover:border hover:border-[#a0aec0] focus:outline-none cursor-pointer rounded bg-white p-2 w-28 sm:w-32"
             dayClassName={(date) => (isBookedDate(date) ? "booked-date" : "")}
           />
           <DatePicker
@@ -100,12 +100,12 @@ export default function BookVenue({ venue, bookings }) {
             minDate={dateFrom}
             excludeDates={excludedDates}
             placeholderText="CHECK-OUT"
-            className="datepicker-input text-center ms-1 cursor-pointer hover:border hover:border-[#a0aec0] focus:outline-none rounded bg-white p-2 w-32"
+            className="datepicker-input text-center ms-1 cursor-pointer border border-gray-300 hover:border hover:border-[#a0aec0] focus:outline-none rounded bg-white p-2 w-28 sm:w-32"
             dayClassName={(date) => (isBookedDate(date) ? "booked-date" : "")}
           />
         </div>
 
-        <div className="flex justify-center items-center bg-white mt-4 border border-gray-300 rounded-md p-2">
+        <div className="flex justify-center items-center bg-customWhite mt-4 border border-gray-300 rounded-md p-2">
           <p className="mx-2">NUMBER OF GUESTS</p>
           <select
             id="guests"
