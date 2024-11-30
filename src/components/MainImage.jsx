@@ -8,8 +8,10 @@ export default function MainImage() {
         alt="Swimming Pool"
         className="relative top-0 left-0 w-full object-cover"
       />
-      <div className="absolute bottom-0 left-0 p-5 rounded-tr-lg bg-customBlue/50">
-        <h1 className="text-4xl text-white">FIND YOUR NEXT VACATION SPOT</h1>
+      <div className="absolute bottom-0 left-0 p-2 md:p-5 rounded-tr-lg bg-customBlue/50">
+        <h1 className="text-sm xxs:text-xl xs:text-3xl md:text-4xl text-customWhite">
+          FIND YOUR NEXT VACATION SPOT
+        </h1>
       </div>
     </div>
   );
