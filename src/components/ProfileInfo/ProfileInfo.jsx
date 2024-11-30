@@ -53,7 +53,7 @@ export default function ProfileInfo() {
           </div>
         </div>
       </div>
-      <div className="flex sm:flex-col gap-2 xxs:gap-4 sm:gap-2 justify-start xxs:ms-2 sm:ms-6">
+      <div className="flex sm:flex-col gap-2 xxs:gap-4 sm:gap-2 justify-start sm:mt-3 lg:mt-5 xxs:ms-2 sm:ms-6">
         <button
           className="font-semibold sm:w-full text-sm self-center hover:bg-hoverRed text-customWhite bg-customRed lg:ms-12 p-1 xxs:px-3 xs:py-2 rounded flex items-center gap-2 shadow-md"
           onClick={toggleOverlay}
@@ -78,12 +78,12 @@ export default function ProfileInfo() {
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
-            fillRule="currentColor"
-            className="bi bi-plus-lg text-customWhite"
+            fill="currentColor"
+            class="bi bi-plus-lg"
             viewBox="0 0 16 16"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"
             />
           </svg>

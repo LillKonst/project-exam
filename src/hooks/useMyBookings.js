@@ -4,7 +4,7 @@ export default function useMyBookings(user) {
   const queryKey = ["bookings", user?.name];
   const queryFn = async () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    const token = storedUser?.accessToken; // If accessToken is stored inside the user object
+    const token = storedUser?.accessToken;
     if (!token) {
       throw new Error("Access token is missing or expired.");
     }
