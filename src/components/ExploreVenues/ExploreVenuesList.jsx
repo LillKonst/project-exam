@@ -42,39 +42,41 @@ export default function ExploreVenuesList() {
 
   return (
     <div className="flex flex-col justify-center items-center my-5 mx-8">
-      <div className="flex w-full items-center justify-start">
-        <h1 className="text-2xl">EXPLORE VENUES</h1>
-        <div className="ms-auto mb-4 flex items-center gap-2">
-          <p>Sort by:</p>
-          <select
-            value={`${sort}-${sortOrder}`}
-            onChange={handleSortChange}
-            className="p-2 border rounded"
-          >
-            <option value="created-desc">Newest</option>
-            <option value="created-asc">Oldest</option>
-            <option value="rating-desc">Best Rating</option>
-            <option value="rating-asc">Worst Rating</option>
-          </select>
-        </div>
-      </div>
-      <div className="w-full">
-        <div className="flex gap-4 mb-4">
-          {["wifi", "parking", "breakfast", "pets"].map((filter) => (
-            <button
-              key={filter}
-              onClick={() =>
-                setFilters((prev) => ({ ...prev, [filter]: !prev[filter] }))
-              }
-              className={`px-2 py-1 rounded border ${
-                filters[filter]
-                  ? "bg-customRed text-white border-customRed"
-                  : "bg-customWhite text-gray-800 border-gray-400"
-              }`}
+      <div className="flex flex-col w-full justify-start">
+        <h1 className=" text-lg sm:text-2xl font-medium">EXPLORE VENUES</h1>
+        <div className="w-full flex flex-col sm:flex-row justify-start mt-2">
+          <div className="mb-4 flex items-center gap-2">
+            <p className="font-medium">Sort by:</p>
+            <select
+              value={`${sort}-${sortOrder}`}
+              onChange={handleSortChange}
+              className="p-2 border rounded-lg"
             >
-              {filter.charAt(0).toUpperCase() + filter.slice(1)}
-            </button>
-          ))}
+              <option value="created-desc">Newest</option>
+              <option value="created-asc">Oldest</option>
+              <option value="rating-desc">Best Rating</option>
+              <option value="rating-asc">Worst Rating</option>
+            </select>
+          </div>
+
+          <div className="flex flex-wrap gap-4 mb-4 sm:ms-auto items-center">
+            <p className="font-medium">Filter:</p>
+            {["wifi", "parking", "breakfast", "pets"].map((filter) => (
+              <button
+                key={filter}
+                onClick={() =>
+                  setFilters((prev) => ({ ...prev, [filter]: !prev[filter] }))
+                }
+                className={`px-3 text-sm rounded-lg border ${
+                  filters[filter]
+                    ? "bg-customRed text-white border-customRed"
+                    : "bg-customWhite text-gray-800 border-gray-400"
+                }`}
+              >
+                {filter.charAt(0).toUpperCase() + filter.slice(1)}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -98,7 +100,7 @@ export default function ExploreVenuesList() {
         <span className="mx-4 text-lg font-medium">Page {page}</span>
 
         <button
-          className="px-4 py-2 bg-blue-500 text-white rounded"
+          className="px-4 py-2 bg-customRed text-white rounded"
           onClick={handleNextPage}
           disabled={page === totalPages}
         >
