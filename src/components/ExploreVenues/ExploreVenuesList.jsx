@@ -1,6 +1,5 @@
 import VenueLinkSm from "../cards/VenueLinkSm/VenueLinkSm";
 import useExploreVenues from "../../hooks/useExploreVenues";
-import { useState, useEffect } from "react";
 
 export default function ExploreVenuesList() {
   const {
@@ -9,8 +8,6 @@ export default function ExploreVenuesList() {
     isError,
     page,
     setPage,
-    search,
-    setSearch,
     sort,
     setSort,
     sortOrder,
@@ -19,13 +16,6 @@ export default function ExploreVenuesList() {
     setFilters,
     totalPages,
   } = useExploreVenues();
-
-  const [searchQuery, setSearchQuery] = useState(search);
-
-  const handleSearch = () => {
-    console.log("Setting search:", searchQuery);
-    setSearch(searchQuery);
-  };
 
   const handleNextPage = () => setPage((prevPage) => prevPage + 1);
   const handlePreviousPage = () =>
@@ -41,25 +31,6 @@ export default function ExploreVenuesList() {
     const { name } = e.target;
     setFilters((prev) => ({ ...prev, [name]: !prev[name] }));
   };
-
-  const filteredVenues = venues?.filter((venue) => {
-    const query = search.trim().toLowerCase();
-    const matchesSearch =
-      query === "" ||
-      venue.name.toLowerCase().includes(query) ||
-      venue.location?.city?.toLowerCase().includes(query) ||
-      venue.location?.country?.toLowerCase().includes(query);
-
-    const passesFilters = Object.entries(filters).every(
-      ([filterKey, isActive]) => !isActive || venue.meta?.[filterKey],
-    );
-
-    return matchesSearch && passesFilters;
-  });
-
-  useEffect(() => {
-    console.log("Filtered venues:", filteredVenues);
-  }, [filteredVenues]);
 
   if (isLoading && page === 1) {
     return <div>Loading venues...</div>;
@@ -87,22 +58,6 @@ export default function ExploreVenuesList() {
           </select>
         </div>
       </div>
-      {/* Search Bar */}
-      <div className="w-full mb-4 flex gap-2">
-        <input
-          type="text"
-          placeholder="Search by location, address, city, country, or continent"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="flex-grow p-2 border rounded"
-        />
-        <button
-          onClick={handleSearch}
-          className="px-4 py-2 bg-blue-500 text-white rounded"
-        >
-          Search
-        </button>
-      </div>
       <div className="w-full">
         <div className="flex gap-4 mb-4">
           {["wifi", "parking", "breakfast", "pets"].map((filter) => (
@@ -122,17 +77,15 @@ export default function ExploreVenuesList() {
           ))}
         </div>
       </div>
-      {/* Venue List */}
+
       <div className="grid grid-cols-12 gap-1 w-full mx-2">
-        {filteredVenues && filteredVenues.length > 0 ? (
-          filteredVenues.map((venue) => (
-            <VenueLinkSm key={venue.id} venue={venue} />
-          ))
+        {venues && venues.length > 0 ? (
+          venues.map((venue) => <VenueLinkSm key={venue.id} venue={venue} />)
         ) : (
           <p>No venues available.</p>
         )}
       </div>
-      ;{/* Pagination Controls */}
+
       <div className="flex items-center justify-between mt-4">
         <button
           className="px-4 py-2 bg-gray-500 text-white rounded"
