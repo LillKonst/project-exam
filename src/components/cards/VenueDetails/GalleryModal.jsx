@@ -1,5 +1,4 @@
 import { useState } from "react";
-import venueDefaultImg from "../../../images/venue-default-img.png";
 
 export default function GalleryModal({ media, closeGallery }) {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -35,7 +34,7 @@ export default function GalleryModal({ media, closeGallery }) {
                 {media.map((thumbnail, index) => (
                   <img
                     key={index}
-                    src={thumbnail.url} // Access the `url` property
+                    src={thumbnail.url}
                     alt={thumbnail.alt || `Thumbnail ${index + 1}`}
                     onClick={() => selectImage(index)}
                     style={{

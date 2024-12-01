@@ -19,7 +19,7 @@ export default function ConfirmDelete({
           <button
             onClick={onConfirm}
             disabled={isLoading}
-            className={`py-2 px-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
+            className={`py-2 px-4 bg-customRed hover:hoverRed text-customWhite font-semibold rounded-lg ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
           >
             Yes, Delete
           </button>

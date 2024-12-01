@@ -15,10 +15,6 @@ export default function VenueForm({ onSubmit, buttonText = "Submit" }) {
     const formData = {
       name: e.target.title.value,
       description: e.target.description.value,
-      // media: images.map((url) => ({
-      //   url,
-      //   alt: "Uploaded image",
-      // })),
       media: images.map((image) => ({
         url: image.url,
         alt: image.alt || "Default alt text",

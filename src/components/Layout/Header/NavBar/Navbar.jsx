@@ -10,10 +10,6 @@ export function AllVenues() {
   return <div>Venues</div>;
 }
 
-// export function Profile() {
-//     return <div>Profile</div>
-// }
-
 export function RouteNotFound() {
   return <div>Page not found</div>;
 }
