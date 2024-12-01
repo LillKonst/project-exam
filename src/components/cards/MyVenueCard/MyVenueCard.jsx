@@ -16,7 +16,7 @@ export default function MyVenueCard({
   const { mutateAsync: deleteVenue, isLoading, isError } = useDeleteVenue();
 
   const handleDeleteClick = () => {
-    setShowModal(true); // Show the confirmation modal
+    setShowModal(true);
   };
 
   const handleConfirmDelete = async () => {

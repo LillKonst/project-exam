@@ -1,8 +1,6 @@
 import { useAuth } from "../../context/AuthContext";
 import useMyVenues from "../../hooks/useMyVenues";
-import RegisterVenue from "../../routes/RegisterVenue/RegisterVenue";
 import MyVenueCard from "../cards/MyVenueCard/MyVenueCard";
-import { Link } from "react-router-dom";
 import ShowBooking from "../cards/ShowBooking/ShowBooking";
 import { useState } from "react";
 
@@ -44,7 +42,7 @@ export default function MyVenues() {
       </div>
       <div>
         {venues.length > 0 ? (
-          <div className="flex flex-wrap justify-center items-center md:justify-start gap-2">
+          <div className="flex flex-wrap items-center justify-start gap-2">
             {venues.map((venue) => (
               <MyVenueCard
                 key={venue.id}

@@ -12,7 +12,6 @@ export default function UpdateGallery({
   const handleAddImage = (e) => {
     e.preventDefault();
     if (!currentImageUrl.trim()) {
-      console.log("Empty input. No image added.");
       return;
     }
 

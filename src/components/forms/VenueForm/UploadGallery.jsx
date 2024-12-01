@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export default function UploadGallery({
   images,
   setImages,
@@ -10,29 +8,9 @@ export default function UploadGallery({
   selectedImageIndex,
   setSelectedImageIndex,
 }) {
-  // const handleAddImage = (e) => {
-  //   e.preventDefault();
-  //   if (!currentImage.trim()) {
-  //     console.log("Empty input. No image added.");
-  //     return; // Prevent adding empty URLs
-  //   }
-
-  //   setImages((prev) => {
-  //     const newImages = [...prev, currentImage];
-  //     console.log("Images after addition:", newImages); // Log the updated list of images
-  //     setSelectedImageIndex(newImages.length - 1); // Select the newly added image
-  //     console.log("Selected image index after addition:", newImages.length - 1);
-  //     return newImages;
-  //   });
-
-  //   setCurrentImage(""); // Clear the input field
-  //   console.log("Input cleared. Current image value:", currentImage);
-  // };
-
   const handleAddImage = (e) => {
     e.preventDefault();
     if (!currentImageUrl.trim()) {
-      console.log("Empty input. No image added.");
       return;
     }
 
@@ -52,10 +30,8 @@ export default function UploadGallery({
   };
 
   const handleDeleteImage = (indexToDelete) => {
-    console.log("Deleting image at index:", indexToDelete);
     setImages((prev) => {
       const newImages = prev.filter((_, index) => index !== indexToDelete);
-      console.log("Images after deletion:", newImages);
       return newImages;
     });
   };
@@ -109,9 +85,9 @@ export default function UploadGallery({
                 No images
               </div>
               <div className="flex gap-2">
-                <div className="w-16 h-16 bg-gray-300 rounded-md"></div>
-                <div className="w-16 h-16 bg-gray-300 rounded-md"></div>
-                <div className="w-16 h-16 bg-gray-300 rounded-md"></div>
+                <div className="w-10 h-10 xs:w-16 xs:h-16 bg-gray-300 rounded-md"></div>
+                <div className="w-10 h-10 xs:w-16 xs:h-16 bg-gray-300 rounded-md"></div>
+                <div className="w-10 h-10 xs:w-16 xs:h-16 bg-gray-300 rounded-md"></div>
               </div>
             </div>
           </div>
