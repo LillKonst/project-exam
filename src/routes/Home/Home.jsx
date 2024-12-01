@@ -7,14 +7,16 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center">
       <MainImage />
-      <NewestVenueDisplay />
-      <BestRankedVenueDisplay />
-      <Link
-        to="/AllVenues"
-        className="my-5 w-fit rounded-lg p-3 flex hover:shadow-lg justify-center items-center bg-customRed"
-      >
-        <h2 className="text-xl font-semibold m-3">ALL VENUES</h2>
-      </Link>
+      <div className="md:mx-4 flex flex-col">
+        <NewestVenueDisplay />
+        <BestRankedVenueDisplay />
+        <Link
+          to="/AllVenues"
+          className="my-5 w-fit mx-auto rounded-lg p-3 flex hover:shadow-lg justify-center items-center bg-customRed"
+        >
+          <h2 className="text-xl font-semibold m-3">ALL VENUES</h2>
+        </Link>
+      </div>
     </div>
   );
 }

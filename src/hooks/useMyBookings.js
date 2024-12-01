@@ -30,15 +30,14 @@ export default function useMyBookings(user) {
     return data.data;
   };
 
-  // React Query with object form
   const {
-    data: bookings = [], // default to empty array
+    data: bookings = [],
     error,
     isLoading: loading,
   } = useQuery({
     queryKey,
     queryFn,
-    enabled: !!user?.name, // Prevent running the query if user.name is not available
+    enabled: !!user?.name,
   });
 
   return { bookings, loading, error };

@@ -1,4 +1,4 @@
-import logo from "../../../images/YELLOW-TENT-LOGO.svg";
+import logo from "../../../images/holidaze-logo.svg";
 import { Link } from "react-router-dom";
 
 export default function Footer() {

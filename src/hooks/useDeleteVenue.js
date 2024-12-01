@@ -1,29 +1,8 @@
-// import { useMutation } from "@tanstack/react-query";
-
-// async function deleteVenue(id) {
-//   const response = await fetch(
-//     `${import.meta.env.VITE_APP_BASEURL}holidaze/venues/${id}`,
-//     {
-//       method: "DELETE",
-//     }
-//   );
-
-//   if (!response.ok) {
-//     throw new Error("Failed to delete venue");
-//   }
-
-//   return response;
-// }
-
-// export function useDeleteVenue() {
-//   return useMutation(deleteVenue);
-// }
-
 import { useMutation } from "@tanstack/react-query";
 
 async function deleteVenueAPI(id) {
   const user = JSON.parse(localStorage.getItem("user"));
-  const token = user?.accessToken; // If accessToken is stored inside the user object
+  const token = user?.accessToken;
   if (!token) {
     throw new Error("Access token is missing or expired.");
   }
@@ -44,7 +23,7 @@ async function deleteVenueAPI(id) {
     throw new Error("Failed to delete venue");
   }
 
-  return response; // No content will be returned, but we can still return a response object for consistency
+  return response;
 }
 
 export function useDeleteVenue() {
@@ -55,5 +34,5 @@ export function useDeleteVenue() {
     },
   });
 
-  return { ...mutation, mutateAsync: mutation.mutateAsync }; // Return mutateAsync alongside other properties
+  return { ...mutation, mutateAsync: mutation.mutateAsync };
 }

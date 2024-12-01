@@ -4,7 +4,7 @@ export default function useMyVenues(user) {
   const queryKey = ["venues", user?.name];
   const queryFn = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
-    const token = user?.accessToken; // If accessToken is stored inside the user object
+    const token = user?.accessToken;
     if (!token) {
       throw new Error("Access token is missing or expired.");
     }
@@ -30,15 +30,14 @@ export default function useMyVenues(user) {
     return data.data;
   };
 
-  // React Query with object form
   const {
-    data: venues = [], // default to empty array
+    data: venues = [],
     error,
     isLoading: loading,
   } = useQuery({
     queryKey,
     queryFn,
-    enabled: !!user?.name, // Prevent running the query if user.name is not available
+    enabled: !!user?.name,
   });
 
   return { venues, loading, error };

@@ -1,11 +1,9 @@
 export async function useCreateVenue(formData) {
   const user = JSON.parse(localStorage.getItem("user"));
-  const token = user?.accessToken; // If accessToken is stored inside the user object
+  const token = user?.accessToken;
   if (!token) {
     throw new Error("Access token is missing or expired.");
   }
-
-  console.log("Authorization Token:", token);
 
   try {
     const response = await fetch(
@@ -27,7 +25,6 @@ export async function useCreateVenue(formData) {
     }
 
     const json = await response.json();
-    console.log("Created Venue Response:", json);
     return json.data;
   } catch (error) {
     console.error("Error creating venue:", error);
