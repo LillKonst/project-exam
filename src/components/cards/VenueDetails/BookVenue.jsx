@@ -78,7 +78,7 @@ export default function BookVenue({ venue, bookings }) {
           <h2 className="ms-2 text-gray-600 text-xl sm:text-2xl">night</h2>
         </div>
 
-        <div className="flex justify-center items-center">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
           <DatePicker
             selected={dateFrom}
             onChange={(date) => setDateFrom(date)}
@@ -88,7 +88,7 @@ export default function BookVenue({ venue, bookings }) {
             minDate={new Date()}
             excludeDates={excludedDates}
             placeholderText="CHECK-IN"
-            className="datepicker-input text-center me-1 border border-gray-300 hover:border hover:border-[#a0aec0] focus:outline-none cursor-pointer rounded bg-white p-2 w-28 sm:w-32"
+            className="datepicker-input text-center border border-gray-300 hover:border hover:border-[#a0aec0] focus:outline-none cursor-pointer rounded bg-white p-2 w-full sm:w-32"
             dayClassName={(date) => (isBookedDate(date) ? "booked-date" : "")}
           />
           <DatePicker
@@ -100,7 +100,7 @@ export default function BookVenue({ venue, bookings }) {
             minDate={dateFrom}
             excludeDates={excludedDates}
             placeholderText="CHECK-OUT"
-            className="datepicker-input text-center ms-1 cursor-pointer border border-gray-300 hover:border hover:border-[#a0aec0] focus:outline-none rounded bg-white p-2 w-28 sm:w-32"
+            className="datepicker-input text-center cursor-pointer border border-gray-300 hover:border hover:border-[#a0aec0] focus:outline-none rounded bg-white p-2 w-full sm:w-32"
             dayClassName={(date) => (isBookedDate(date) ? "booked-date" : "")}
           />
         </div>
