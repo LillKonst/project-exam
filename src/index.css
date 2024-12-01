@@ -32,7 +32,6 @@ div {
 
 html,
 body {
-  /* background-color: #E2F1F3; */
   background-color: #fbfafe;
   width: 100%;
   margin: 0;
@@ -44,14 +43,13 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black background */
-  z-index: 1000; /* Makes sure the overlay is above other content */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000; 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Content inside the overlay */
 .overlay-content {
   background-color: white;
   padding: 20px;
@@ -61,7 +59,6 @@ body {
   position: relative;
 }
 
-/* Close button for the overlay */
 .close-button {
   position: absolute;
   top: 10px;
@@ -75,7 +72,8 @@ body {
 }
 
 .booked-date {
-  pointer-events: none; /* Prevent interaction */
-  border-radius: 50%; /* Match the calendar's default day styling */
+  pointer-events: none; 
+  border-radius: 50%; 
   color: red;
 }
+

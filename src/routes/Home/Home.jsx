@@ -1,13 +1,20 @@
-import ListOfVenues from "../../components/ListOfVenues/ListOfVenues";
+import BestRankedVenueDisplay from "../../components/BestRankedVenueDisplay/BestRankedVenueDisplay";
+import NewestVenueDisplay from "../../components/cards/NewestVenueDisplay/NewestVenueDisplay";
 import MainImage from "../../components/MainImage";
-import VenuesList from "../test";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div>
-      {/* <VenuesList /> */}
+    <div className="flex flex-col items-center justify-center">
       <MainImage />
-      <ListOfVenues />
+      <NewestVenueDisplay />
+      <BestRankedVenueDisplay />
+      <Link
+        to="/AllVenues"
+        className="my-5 w-fit rounded-lg p-3 flex hover:shadow-lg justify-center items-center bg-customRed"
+      >
+        <h2 className="text-xl font-semibold m-3">ALL VENUES</h2>
+      </Link>
     </div>
   );
 }

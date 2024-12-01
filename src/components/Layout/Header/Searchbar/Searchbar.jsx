@@ -40,7 +40,7 @@ export default function Searchbar({ className }) {
 
   const handleVenueClick = (venueId) => {
     setQuery("");
-    navigate(`/venues/${venueId}`);
+    navigate(`/VenueSpecific/${venueId}`);
   };
 
   return (

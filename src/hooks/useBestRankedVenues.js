@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
-const fetchVenues = async () => {
+const fetchBestRankedVenues = async () => {
   const response = await fetch(
-    `${import.meta.env.VITE_APP_BASEURL}holidaze/venues?sort=created&sortOrder=desc&limit=9`,
+    `${import.meta.env.VITE_APP_BASEURL}holidaze/venues?sort=rating&sortOrder=desc&limit=3`,
   );
   if (!response.ok) {
     throw new Error("Failed to fetch venues");
@@ -11,10 +11,10 @@ const fetchVenues = async () => {
   return json.data;
 };
 
-export default function useQueryVenues() {
+export default function useQueryBestRankedVenues() {
   return useQuery({
-    queryKey: ["venues"],
-    queryFn: fetchVenues,
+    queryKey: ["best-ranked-venues"],
+    queryFn: fetchBestRankedVenues,
     staleTime: 0,
     cacheTime: 0,
     refetchOnWindowFocus: true,
