@@ -24,7 +24,7 @@ export default function WelcomeModal({ onClose }) {
         <div className="mt-4 flex space-x-4">
           <button
             onClick={handleYes}
-            className="py-2 px-4 bg-customBlue text-white rounded-lg hover:bg-blueHover"
+            className="py-2 px-4 bg-customRed text-white rounded-lg hover:bg-customRed"
           >
             YES
           </button>

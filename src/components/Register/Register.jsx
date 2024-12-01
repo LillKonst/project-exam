@@ -14,6 +14,7 @@ export default function Register({ onClose, onRegisterSuccess, openLogin }) {
     venueManager: false,
   });
   const [emailError, setEmailError] = useState("");
+  const [registerError, setRegisterError] = useState("");
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -33,6 +34,7 @@ export default function Register({ onClose, onRegisterSuccess, openLogin }) {
     }
 
     setEmailError("");
+    setRegisterError("");
 
     register(
       {
@@ -59,6 +61,16 @@ export default function Register({ onClose, onRegisterSuccess, openLogin }) {
         },
         onError: (registerError) => {
           console.error("Registration error:", registerError);
+
+          let errorMessage = "An unexpected error occurred. Please try again.";
+
+          if (registerError.response?.data?.errors?.length) {
+            errorMessage = registerError.response.data.errors[0].message;
+          } else if (registerError.message) {
+            errorMessage = registerError.message;
+          }
+
+          setRegisterError(errorMessage);
         },
       },
     );
@@ -146,11 +158,13 @@ export default function Register({ onClose, onRegisterSuccess, openLogin }) {
             </label>
           </div>
         </div>
-
+        {registerError && (
+          <div className="text-red-500 text-sm mt-2">{registerError}</div>
+        )}
         <div>
           <button
             type="submit"
-            className="w-full py-2 mt-4 bg-customRed text-white rounded-lg font-semibold hover:bg-hoverRed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blueHover"
+            className="w-full py-2 mt-4 bg-customRed text-white rounded-lg font-semibold hover:bg-hoverRed focus:outline-none focus:ring-none"
             disabled={isRegistering || isLoggingIn}
           >
             {isRegistering || isLoggingIn ? "Processing..." : "Register"}
