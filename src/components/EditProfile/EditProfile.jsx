@@ -10,6 +10,7 @@ export default function EditProfile({ onClose }) {
   });
   const [initialData, setInitialData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [warning, setWarning] = useState("");
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -80,19 +81,33 @@ export default function EditProfile({ onClose }) {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setNewUserData((prevData) => ({
-      ...prevData,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    setNewUserData((prevData) => {
+      const updatedData = {
+        ...prevData,
+        [name]: type === "checkbox" ? checked : value,
+      };
+
+      // Show warning when venueManager is unchecked
+      if (name === "venueManager" && !checked) {
+        setWarning(
+          "Warning: You will lose your Venue Manager status and your venues will be deactivated.",
+        );
+      } else {
+        setWarning(""); // Clear warning when checked
+      }
+
+      return updatedData;
+    });
   };
 
   return (
     <div>
       <button
-        className="close-button bg-red-500 text-white p-2 rounded-md mb-4"
+        type="button"
         onClick={onClose}
+        className="absolute text-2xl top-0 right-5 m-2 p-2 text-gray-700 rounded-lg font-semibold focus:outline-none"
       >
-        Close
+        ✕
       </button>
       <form onSubmit={handleSubmit}>
         <h2 className="text-xl font-semibold">EDIT PROFILE</h2>
@@ -123,23 +138,25 @@ export default function EditProfile({ onClose }) {
           className="border rounded-lg p-2 w-full"
           rows="3"
         />
-        <div>
+        <div className="m-2">
+          <p>Would you like to register and manage your own venues?</p>
           <input
             type="checkbox"
             name="venueManager"
             id="venueManager"
             checked={newUserData.venueManager}
             onChange={handleChange}
-            className="mr-2"
+            className=" m-2 h-4 w-4 text-customWhite rounded focus:ring-none focus:outline-none transition duration-200 ease-in-out"
           />
           <label htmlFor="venueManager" className="text-sm font-medium">
             Become a Venue Manager
           </label>
         </div>
+        {warning && <div className="text-red-500 m-2 p-2">{warning}</div>}
         {error && <div className="text-red-500 mt-2">{error}</div>}
         <button
           type="submit"
-          className="bg-yellow-300 text-black font-semibold py-2 px-4 rounded-lg"
+          className="bg-customRed text-black font-semibold py-2 px-4 rounded-lg"
         >
           SAVE CHANGES
         </button>
