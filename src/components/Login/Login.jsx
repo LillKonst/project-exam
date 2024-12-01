@@ -2,7 +2,7 @@ import useLogin from "../../hooks/useLogin";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 
-export default function Login({ onClose }) {
+export default function Login({ onClose, openRegister }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login: contextLogin } = useAuth();
@@ -27,10 +27,7 @@ export default function Login({ onClose }) {
   };
 
   return (
-    <form
-      className="space-y-4 p-6 max-w-md mx-auto bg-white shadow-lg rounded-lg"
-      onSubmit={handleSubmit}
-    >
+    <form className="space-y-4 p-6 max-w-md mx-auto" onSubmit={handleSubmit}>
       <h2 className="text-2xl font-semibold text-gray-800 text-center">
         Login
       </h2>
@@ -46,7 +43,7 @@ export default function Login({ onClose }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-customRed"
+          className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-customBlue"
           placeholder="Your email"
           autoComplete="email"
         />
@@ -63,7 +60,7 @@ export default function Login({ onClose }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-customRed"
+          className="w-full px-4 py-2 mt-1 border rounded-lg  focus:outline-none focus:ring-2 focus:ring-customBlue"
           placeholder="Your password"
           autoComplete="current-password"
         />
@@ -73,11 +70,17 @@ export default function Login({ onClose }) {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-2 mt-4 bg-customBlue text-white rounded-lg font-semibold hover:bg-blueHover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blueHover"
+          className="w-full py-2 mt-4 bg-customRed text-white rounded-lg font-semibold hover:bg-hoverRed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-hoverRed"
         >
           {loading ? "Logging in..." : "Login"}
         </button>
         {error && <div style={{ color: "red" }}>Error: {error.message}</div>}
+      </div>
+      <div className="flex gap-1">
+        <p>Dont have an account?</p>
+        <button onClick={openRegister} className="hover:underline">
+          Register here
+        </button>
       </div>
     </form>
   );

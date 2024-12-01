@@ -12,7 +12,6 @@ export default function Searchbar({ className }) {
       .then((response) => response.json())
       .then((json) => {
         setResults(json.data);
-        console.log(json);
       })
       .catch((err) => console.error("Error fetching data:", err));
   };
