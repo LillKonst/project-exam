@@ -70,7 +70,7 @@ export default function Searchbar({ className }) {
       </form>
 
       {query.length > 0 && filteredResults.length > 0 && (
-        <div className="absolute top-full left-0 w-screen sm:w-full bg-white shadow-lg z-50 border border-gray-200 mt-1 rounded">
+        <div className="absolute top-full left-0 right-0 sm:w-full bg-white shadow-lg z-50 border border-gray-200 mt-1 rounded">
           <h2 className="m-2 text-lg border-b">
             Results ({filteredResults.length})
           </h2>

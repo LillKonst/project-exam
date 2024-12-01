@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useAuth } from "../../../../context/AuthContext";
 import Register from "../../../Register/Register";
 import Login from "../../../Login/Login";
@@ -20,6 +20,20 @@ export default function UserIcon() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isProfilePromptOpen, setIsProfilePromptOpen] = useState(false);
   const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   const { user } = useAuth();
   const logout = useLogout();
@@ -93,6 +107,7 @@ export default function UserIcon() {
         )}
       </div>
       <ul
+        ref={menuRef}
         className={`${
           isMenuOpen ? "lg:flex" : "lg:hidden"
         } flex flex-col lg:absolute lg:top-12 lg:mt-3 lg:right-1 lg:shadow-md lg:bg-customWhite md:rounded-xl`}
