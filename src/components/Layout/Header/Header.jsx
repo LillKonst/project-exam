@@ -44,10 +44,10 @@ function Header() {
                      bg-customWhite lg:bg-transparent lg:w-full
                       border-b-4 border-customYellow lg:border-none lg:space-x-4 `}
         >
-          <div className="flex flex-col items-start lg:flex-row lg:items-center w-full">
+          <div className="flex flex-col items-start lg:flex-row lg:items-center lg:justify-center w-full">
             <Navbar className="lg:mt-5" />
             <UserIcon />
-            <Searchbar className="w-full lg:mt-4" />
+            <Searchbar className="w-full lg:mt-2" />
           </div>
         </div>
       </div>

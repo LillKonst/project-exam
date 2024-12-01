@@ -12,7 +12,6 @@ async function fetchVenue(id) {
   }
 
   const json = await response.json();
-  console.log("API Response:", json);
   return json.data || json;
 }
 

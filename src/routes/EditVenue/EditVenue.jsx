@@ -75,7 +75,7 @@ export default function EditVenue() {
   }
 
   return (
-    <div className="m-5 md:m-10">
+    <div className="m-5 md:m-12">
       <h2 className="text-2xl mb-5">EDIT VENUE</h2>
       <UpdateVenueForm
         initialData={venue}

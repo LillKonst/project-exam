@@ -15,7 +15,7 @@ export default function RegisterVenue() {
   };
 
   return (
-    <div className="m-5 md:m-10">
+    <div className="m-5 md:m-12">
       <h2 className="text-2xl mb-5">REGISTER VENUE</h2>
       <VenueForm onSubmit={handleSubmit} buttonText="Register Venue" />
     </div>

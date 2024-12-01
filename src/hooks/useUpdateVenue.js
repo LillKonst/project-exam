@@ -35,7 +35,6 @@ export function useUpdateVenue() {
       }
 
       const data = await response.json();
-      console.log("Venue updated successfully:", data);
       navigate("/profile");
     } catch (err) {
       setError(err.message);
