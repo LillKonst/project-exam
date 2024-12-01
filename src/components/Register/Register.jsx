@@ -13,6 +13,7 @@ export default function Register({ onClose, onRegisterSuccess }) {
     password: "",
     venueManager: false,
   });
+  const [emailError, setEmailError] = useState("");
 
   // Handle form input changes
   const handleChange = (event) => {
@@ -27,10 +28,20 @@ export default function Register({ onClose, onRegisterSuccess }) {
     );
   };
 
-  // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Form submitted with data:", formData);
+
+    // Check if email ends with "@stud.noroff.no"
+    if (!formData.email.endsWith("@stud.noroff.no")) {
+      setEmailError(
+        "Please use a valid email address that ends with @stud.noroff.no",
+      );
+      return;
+    }
+
+    // Clear the email error if valid
+    setEmailError("");
 
     // Trigger the registration mutation
     register(
@@ -127,6 +138,7 @@ export default function Register({ onClose, onRegisterSuccess }) {
           className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-customBlue"
           placeholder="you@example.com"
         />
+        {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
       </div>
 
       <div>
