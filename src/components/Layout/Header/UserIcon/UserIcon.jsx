@@ -64,7 +64,7 @@ export default function UserIcon() {
             </svg>
           </div>
         ) : (
-          <div className="hidden lg:flex gap-2 items-center border border-customBlack p-2 rounded-full mt-2 ms-auto">
+          <div className="hidden lg:flex gap-2 items-center border border-gray-600 p-2 rounded-full mt-2 ms-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

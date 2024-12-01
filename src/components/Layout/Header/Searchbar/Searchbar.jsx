@@ -48,7 +48,7 @@ export default function Searchbar({ className }) {
         onSubmit={(e) => e.preventDefault()}
         className="flex justify-center lg:justify-end items-center lg:px-3"
       >
-        <div className="flex items-center w-full border bg-white/50 border-gray-300 rounded-2xl m-4 lg:m-2 lg:mt-3 p-2">
+        <div className="flex items-center w-full border bg-white/50 border-gray-400 rounded-2xl m-4 lg:m-2 lg:mt-3 p-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

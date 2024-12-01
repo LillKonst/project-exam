@@ -1,4 +1,4 @@
-import mainImage from "../images/swimming-pool-2128578_1280-main.jpg";
+import mainImage from "../images/main-img-holidaze-cut.jpg";
 import { Link } from "react-router-dom";
 
 export default function MainImage() {

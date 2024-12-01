@@ -1,7 +1,8 @@
 import BestRankedVenueDisplay from "../../components/BestRankedVenueDisplay/BestRankedVenueDisplay";
+import AllVenuesLink from "../../components/buttons/AllVenuesLink/AllVenuesLink";
 import NewestVenueDisplay from "../../components/cards/NewestVenueDisplay/NewestVenueDisplay";
 import MainImage from "../../components/MainImage";
-import { Link } from "react-router-dom";
+import RegisterVenueLink from "../../components/buttons/RegisterVenueLink/RegisterVenueLink";
 
 export default function Home() {
   return (
@@ -10,12 +11,10 @@ export default function Home() {
       <div className="md:mx-4 flex flex-col">
         <NewestVenueDisplay />
         <BestRankedVenueDisplay />
-        <Link
-          to="/AllVenues"
-          className="my-5 w-fit mx-auto rounded-lg p-3 flex hover:shadow-lg justify-center items-center bg-customRed"
-        >
-          <h2 className="text-xl font-semibold m-3">ALL VENUES</h2>
-        </Link>
+        <div className="grid grid-cols-12 gap-2 md:gap-4 m-6">
+          <AllVenuesLink />
+          <RegisterVenueLink />
+        </div>
       </div>
     </div>
   );
