@@ -28,6 +28,15 @@ export default function UserIcon() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const openRegisterModal = () => {
+    setIsLoginOpen(false);
+    setIsRegisterOpen(true);
+  };
+  const openLoginModal = () => {
+    setIsRegisterOpen(false);
+    setIsLoginOpen(true);
+  };
+
   return (
     <nav className="flex flex-col lg:items-end mt-5 lg:mt-0 relative lg:ml-auto">
       <div onClick={toggleMenu} className="flex items-center px-2 py-2">
@@ -150,14 +159,14 @@ export default function UserIcon() {
 
       {isRegisterOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+          <div className="bg-customWhite p-6 rounded-lg shadow-lg max-w-md w-full">
             <Register
               onClose={() => setIsRegisterOpen(false)}
               onRegisterSuccess={() => {
-                console.log("onRegisterSuccess called");
                 setIsRegisterOpen(false);
                 setIsProfilePromptOpen(true);
               }}
+              openLogin={openLoginModal}
             />
           </div>
         </div>
@@ -166,12 +175,15 @@ export default function UserIcon() {
       {isLoginOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div className="bg-white relative p-6 rounded-lg shadow-lg max-w-md w-full">
-            <Login onClose={() => setIsLoginOpen(false)} />
+            <Login
+              onClose={() => setIsLoginOpen(false)}
+              openRegister={openRegisterModal}
+            />
             <button
               onClick={() => setIsLoginOpen(false)}
-              className="mt-4 absolute top-4 right-4 px-4 rounded"
+              className="m-4 text-2xl absolute top-4 right-4 px-4 rounded"
             >
-              Close
+              ✕
             </button>
           </div>
         </div>

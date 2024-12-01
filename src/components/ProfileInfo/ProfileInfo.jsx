@@ -1,10 +1,10 @@
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
 import EditProfile from "../EditProfile/EditProfile";
+import { Link } from "react-router-dom";
 
 export default function ProfileInfo() {
   const { user, isVenueManager } = useAuth();
-  console.log(user, isVenueManager);
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
   if (!user) {
@@ -70,7 +70,8 @@ export default function ProfileInfo() {
           </svg>{" "}
           Edit Profile
         </button>
-        <button
+        <Link
+          to="/RegisterVenue"
           className="font-semibold text-sm sm:w-full self-center hover:bg-hoverRed text-customWhite bg-customRed lg:ms-12 p-1 xxs:px-3 xs:py-2 rounded flex items-center gap-2 shadow-md"
           onClick={toggleOverlay}
         >
@@ -79,7 +80,7 @@ export default function ProfileInfo() {
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-plus-lg"
+            className="bi bi-plus-lg"
             viewBox="0 0 16 16"
           >
             <path
@@ -88,7 +89,7 @@ export default function ProfileInfo() {
             />
           </svg>
           Register Venue
-        </button>
+        </Link>
       </div>
       {isOverlayVisible && (
         <div className="overlay">

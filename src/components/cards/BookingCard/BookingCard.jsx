@@ -54,7 +54,10 @@ export default function BookingCard({ booking, venue }) {
             <p className="">Checkout: {formattedDateTo}</p>
           </div>
 
-          <p className="text-xl font-semibold">${venue.price}</p>
+          <div className="flex">
+            <p className="text-xl font-semibold me-1">${venue.price}</p>
+            <p className="text-xl text-gray-600">night</p>
+          </div>
         </div>
       </div>
     </Link>
