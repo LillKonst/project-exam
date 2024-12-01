@@ -2,10 +2,10 @@ export default function ShowBooking({ bookings, onClose }) {
   return (
     <div className="flex flex-col bg-customWhite w-full">
       <button
-        className="close-button bg-red-500 text-white p-2 rounded-md mb-4"
         onClick={onClose}
+        className="absolute text-2xl top-0 right-5 m-2 p-2 text-gray-700 rounded-lg font-semibold focus:outline-none"
       >
-        Close
+        ✕
       </button>
       <h2 className="text-2xl font-semibold mb-4">Bookings</h2>
 
