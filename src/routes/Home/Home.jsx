@@ -1,7 +1,7 @@
 import BestRankedVenueDisplay from "../../components/BestRankedVenueDisplay/BestRankedVenueDisplay";
 import AllVenuesLink from "../../components/buttons/AllVenuesLink/AllVenuesLink";
 import NewestVenueDisplay from "../../components/cards/NewestVenueDisplay/NewestVenueDisplay";
-import MainImage from "../../components/MainImage";
+import MainImage from "../../components/cards/MainImg/MainImage";
 import RegisterVenueLink from "../../components/buttons/RegisterVenueLink/RegisterVenueLink";
 
 export default function Home() {
