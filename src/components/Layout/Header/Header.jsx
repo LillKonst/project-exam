@@ -16,6 +16,7 @@ export function RouteNotFound() {
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -23,7 +24,11 @@ function Header() {
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        !buttonRef.current.contains(event.target)
+      ) {
         setIsMenuOpen(false);
       }
     };
@@ -43,6 +48,7 @@ function Header() {
 
         <div className="block lg:hidden">
           <button
+            ref={buttonRef}
             onClick={toggleMenu}
             className="text-md p-2 bg-customRed rounded-md border-none mt-3 text-customWhite font-semibold"
           >

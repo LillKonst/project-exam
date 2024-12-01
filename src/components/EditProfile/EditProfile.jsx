@@ -149,7 +149,7 @@ export default function EditProfile({ onClose }) {
         {error && <div className="text-red-500 mt-2">{error}</div>}
         <button
           type="submit"
-          className="bg-customRed text-black font-semibold py-2 px-4 rounded-lg"
+          className="bg-customRed text-customWhite font-semibold py-2 px-4 rounded-lg"
         >
           SAVE CHANGES
         </button>

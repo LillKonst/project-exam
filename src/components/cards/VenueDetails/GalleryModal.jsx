@@ -31,16 +31,16 @@ export default function GalleryModal({ media, closeGallery }) {
             </div>
 
             {media.length > 1 && (
-              <div className="thumbnail-row">
+              <div className="flex gap-2 flex-wrap">
                 {media.map((thumbnail, index) => (
                   <img
                     key={index}
-                    src={thumbnail}
-                    alt={`Thumbnail ${index + 1}`}
+                    src={thumbnail.url} // Access the `url` property
+                    alt={thumbnail.alt || `Thumbnail ${index + 1}`}
                     onClick={() => selectImage(index)}
                     style={{
                       width: "100px",
-                      height: "auto",
+                      height: "100px",
                       cursor: "pointer",
                       border:
                         selectedImageIndex === index
