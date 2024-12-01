@@ -3,7 +3,7 @@ import { useAuth } from "../../../../context/AuthContext";
 import Register from "../../../Register/Register";
 import Login from "../../../Login/Login";
 import { Link } from "react-router-dom";
-import WelcomeModal from "../../../WelcomeModal";
+import WelcomeModal from "../../../modal/WelcomeModal/WelcomeModal";
 import useLogout from "../../../../hooks/useLogout";
 
 export function Profile() {
