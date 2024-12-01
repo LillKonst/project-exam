@@ -3,7 +3,7 @@ import Navbar from "../Header/NavBar/Navbar";
 import Searchbar from "../Header/Searchbar/Searchbar";
 import UserIcon from "./UserIcon/UserIcon";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function Home() {
   return <div>Home</div>;
@@ -15,10 +15,24 @@ export function RouteNotFound() {
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <div className="relative top-0 left-0 w-full flex flex-col justify-start items-center z-50 bg-customWhite shadow-sm">
@@ -37,6 +51,7 @@ function Header() {
         </div>
 
         <div
+          ref={menuRef}
           className={`${
             isMenuOpen ? "flex" : "hidden lg:flex"
           } absolute lg:static top-[77px] left-50 right-0 h-screen lg:h-[70px] p-5 lg:p-0 
