@@ -27,7 +27,6 @@ export default function EditProfile({ onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form data before submitting:", newUserData);
 
     if (!newUserData.avatarUrl.trim()) {
       setError("Profile image URL is required.");
@@ -36,14 +35,11 @@ export default function EditProfile({ onClose }) {
 
     const updatedFields = {};
 
-    // Collect the fields that have changed
     Object.keys(newUserData).forEach((key) => {
       if (newUserData[key] !== initialData[key]) {
         updatedFields[key] = newUserData[key];
       }
     });
-
-    console.log("Updated fields being sent:", updatedFields);
 
     if (Object.keys(updatedFields).length > 0) {
       try {
@@ -51,7 +47,6 @@ export default function EditProfile({ onClose }) {
         setError(null);
 
         await updateUserProfile(updatedFields);
-        console.log("Profile updated successfully!");
         onClose();
       } catch (err) {
         if (err.message === "Token expired. Please log in again.") {
@@ -65,7 +60,6 @@ export default function EditProfile({ onClose }) {
       }
     } else {
       setError("No changes to update.");
-      console.log("No changes to update.");
     }
   };
 
@@ -87,13 +81,12 @@ export default function EditProfile({ onClose }) {
         [name]: type === "checkbox" ? checked : value,
       };
 
-      // Show warning when venueManager is unchecked
       if (name === "venueManager" && !checked) {
         setWarning(
           "Warning: You will lose your Venue Manager status and your venues will be deactivated.",
         );
       } else {
-        setWarning(""); // Clear warning when checked
+        setWarning("");
       }
 
       return updatedData;

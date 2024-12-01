@@ -21,16 +21,10 @@ export default function Register({ onClose, onRegisterSuccess, openLogin }) {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
-    console.log(
-      `Updated field ${name}:`,
-      type === "checkbox" ? checked : value,
-    );
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Form submitted with data:", formData);
-
     if (!formData.email.endsWith("@stud.noroff.no")) {
       setEmailError(
         "Please use a valid email address that ends with @stud.noroff.no",
@@ -49,18 +43,10 @@ export default function Register({ onClose, onRegisterSuccess, openLogin }) {
       },
       {
         onSuccess: (registerData) => {
-          console.log("Registration successful. Data:", registerData);
-
-          console.log("Attempting to log in with:", {
-            email: formData.email,
-            password: formData.password,
-          });
-
           login(
             { email: formData.email, password: formData.password },
             {
               onSuccess: (loginData) => {
-                console.log("Login successful. Data:", loginData);
                 contextLogin(loginData);
                 localStorage.setItem("user", JSON.stringify(loginData));
                 onRegisterSuccess?.();

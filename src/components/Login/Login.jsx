@@ -17,7 +17,6 @@ export default function Login({ onClose, openRegister }) {
           contextLogin(data);
           localStorage.setItem("user", JSON.stringify(data));
           onClose();
-          console.log("Login successful for:", email, "with response:", data);
         },
         onError: (error) => {
           console.error("Login error:", error);

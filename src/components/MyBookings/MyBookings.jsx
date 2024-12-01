@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import useMyBookings from "../../hooks/useMyBookings";
 import BookingCard from "../cards/BookingCard/BookingCard";
@@ -16,7 +15,7 @@ export default function MyBookings() {
         MY UPCOMING HOLIDAZE ({bookings.length})
       </h2>
       {bookings.length > 0 ? (
-        <div className="flex flex-wrap justify-center items-center md:justify-start gap-2">
+        <div className="flex flex-wrap items-center justify-start gap-2">
           {bookings.map((booking) => (
             <BookingCard
               key={booking.id}

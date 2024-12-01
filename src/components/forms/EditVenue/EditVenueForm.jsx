@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import UpdateGallery from "./UpdateGallery";
 
 export default function UpdateVenueForm({
@@ -55,7 +55,6 @@ export default function UpdateVenueForm({
         pets: formState.pets,
       },
     };
-    console.log("Form data being submitted:", formData);
     onSubmit(formData);
   };
 
@@ -96,7 +95,7 @@ export default function UpdateVenueForm({
               />
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex flex-col xs:flex-row gap-2">
               <div className="flex flex-col">
                 <label htmlFor="guests" className="mx-2 my-1">
                   Max Guests
@@ -201,7 +200,7 @@ export default function UpdateVenueForm({
                   className="mb-3 border rounded-lg p-2 w-full"
                 />
               </div>
-              <div className="flex gap-2">
+              <div className="flex flex-col xs:flex-row gap-2">
                 <div className="flex flex-col w-full">
                   <label htmlFor="city" className="mx-2 my-1">
                     City
@@ -230,7 +229,7 @@ export default function UpdateVenueForm({
                 </div>
               </div>
 
-              <div className="flex gap-2 w-full">
+              <div className="flex flex-col xs:flex-row gap-2 w-full">
                 <div className="flex flex-col w-full">
                   <label htmlFor="country" className="mx-2 my-1">
                     Country
