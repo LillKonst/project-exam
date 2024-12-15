@@ -21,10 +21,26 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Getting started
-To get a closer look at this website you can 
-1. Clone my github repo: https://github.com/LillKonst/project-exam
-2. Open website with the Netlify app using this link: https://holidaze-exam-lillkonst.netlify.app/
+
+## Getting Started
+### Installing
+
+### Clone the repo:
+
+<pre> git clone https://github.com/LillKonst/project-exam </pre>
+
+### Install the dependencies:
+
+<pre> npm install </pre>
+
+###Running
+To run the app, run the following commands:
+
+<pre> npm run dev </pre>
+
+### You can also: 
+ Open website with the Netlify app using this link: https://holidaze-exam-lillkonst.netlify.app/
+
 
 ## Contact 
 If you are interessted in more details or want to get in contact with me, you are welcome to sending me an email at konstlillkristine@gmail.com
